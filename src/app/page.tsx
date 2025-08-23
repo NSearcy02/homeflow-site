@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { HiCheckCircle } from "react-icons/hi2";
 import { useRef } from "react";
