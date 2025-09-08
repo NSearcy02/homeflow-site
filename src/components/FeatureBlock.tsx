@@ -3,27 +3,23 @@
 import { motion } from "framer-motion";
 
 type FeatureBlockProps = {
-  icon?: React.ReactNode;
   eyebrow: string;
   headline: string;
-  pain: string;
-  solution: string;
-  transformation: string;
-  bullets?: string[];
+  subline: string;
+  chips?: string[];
+  icon?: React.ReactNode;
 };
 
 export default function FeatureBlock({
-  icon,
   eyebrow,
   headline,
-  pain,
-  solution,
-  transformation,
-  bullets,
+  subline,
+  chips,
+  icon,
 }: FeatureBlockProps) {
   return (
     <motion.div
-      className="group relative rounded-2xl border border-black/5 bg-gradient-to-tr from-white to-slate-50 shadow-sm hover:shadow-xl transition-all duration-300 p-6 md:p-7 transform-gpu group-hover:translate-y-[-2px]"
+      className="rounded-2xl border border-black/5 bg-gradient-to-tr from-white to-slate-50 shadow-sm hover:shadow-lg transform-gpu hover:-translate-y-1 transition p-6 md:p-7"
       initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
@@ -43,43 +39,18 @@ export default function FeatureBlock({
         {headline}
       </h3>
       
-      <p className="text-[15px] leading-[1.6] text-slate-600 mt-3">
-        {pain} {solution}
+      <p className="mt-3 text-[15px] leading-[1.6] text-slate-600">
+        {subline}
       </p>
       
-      <div className="border-t border-slate-100 mt-4 pt-4">
-        <div className="space-y-2">
-          <div className="text-[14px] leading-[1.6] text-slate-700">
-            <span className="inline-flex items-center rounded-md bg-slate-100 text-slate-700 text-[11px] font-medium px-2 py-1 mr-2">
-              Pain
-            </span>
-            {pain}
-          </div>
-          
-          <div className="text-[14px] leading-[1.6] text-slate-700">
-            <span className="inline-flex items-center rounded-md bg-slate-100 text-slate-700 text-[11px] font-medium px-2 py-1 mr-2">
-              Solution
-            </span>
-            {solution}
-          </div>
-          
-          <div className="text-[14px] leading-[1.6] text-slate-700">
-            <span className="inline-flex items-center rounded-md bg-slate-100 text-slate-700 text-[11px] font-medium px-2 py-1 mr-2">
-              Transformation
-            </span>
-            {transformation}
-          </div>
-        </div>
-      </div>
-      
-      {bullets && bullets.length > 0 && (
+      {chips && chips.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">
-          {bullets.map((bullet, index) => (
+          {chips.map((chip, index) => (
             <span
               key={index}
               className="rounded-full border border-slate-200 bg-white text-slate-700 text-[12px] px-3 py-1"
             >
-              {bullet}
+              {chip}
             </span>
           ))}
         </div>

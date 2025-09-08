@@ -33,69 +33,59 @@ export default function SystemsPage() {
           <FeatureBlock
             icon={<span aria-hidden="true">☎️</span>}
             eyebrow="Customer Rescue"
-            headline="Even if you miss the call, you never miss the customer."
-            pain="Phones ring during rushes and after hours. Calls go unanswered. Opportunities slip."
-            solution="Automatic text replies go out under your shop's name. Every missed call becomes a conversation."
-            transformation="Customers feel taken care of. You keep the sale alive and your pipeline full."
-            bullets={[
-              "Local number per location",
-              "Custom reply windows and scripts",
-              "Pipeline + task auto assignment"
+            headline="Every call answered, even when you can't pick up."
+            subline="HomeFlow makes sure conversations keep flowing so no customer is left hanging."
+            chips={[
+              "Local numbers",
+              "Custom reply windows",
+              "Pipeline tracking"
             ]}
           />
 
           <FeatureBlock
             icon={<span aria-hidden="true">⭐</span>}
             eyebrow="Retention Engine"
-            headline="Turn first-timers into regulars."
-            pain="Great service is not enough. Competitors are close and habits are fragile."
-            solution="Simple digital loyalty with points, VIP tiers, and instant rewards at checkout."
-            transformation="Every visit earns value. Customers choose you again because it feels good to return."
-            bullets={[
-              "QR signups in seconds",
-              "Birthday and anniversary perks",
-              "VIP tiers customers love"
+            headline="A loyalty program that makes every visit count."
+            subline="With points, perks, and rewards built in, customers feel recognized and keep coming back."
+            chips={[
+              "VIP tiers",
+              "Birthday rewards",
+              "QR signups"
             ]}
           />
 
           <FeatureBlock
             icon={<span aria-hidden="true">🔁</span>}
             eyebrow="Always-On Marketing"
-            headline="Stay top of mind without adding to your to-do list."
-            pain="Owners do not have time to build and send promotions consistently."
-            solution="Prebuilt SMS and email flows that trigger at the right moment: slow days, birthdays, lapsed customers, seasonal offers."
-            transformation="Traffic lifts on autopilot. Messages feel personal and timely."
-            bullets={[
-              "Welcome series and win-backs",
-              "Slow-day boosters",
-              "Holiday and seasonal packs"
+            headline="Marketing that runs itself."
+            subline="Personalized texts and emails reach customers at the right moment — keeping your shop top of mind without the extra effort."
+            chips={[
+              "Welcome flows",
+              "Win-backs",
+              "Seasonal offers"
             ]}
           />
 
           <FeatureBlock
             icon={<span aria-hidden="true">💬</span>}
             eyebrow="Online Presence"
-            headline="Look active, earn stars, and win the scroll."
-            pain="Reviews and posting slip when the shop is busy, yet this is where decisions happen."
-            solution="Auto review requests after visits, simple replies, and a steady calendar of posts."
-            transformation="You appear responsive and reliable. New customers choose you with confidence."
-            bullets={[
-              "Review invites by segment",
+            headline="An online presence that works in the background."
+            subline="Reviews, replies, and posts handled automatically so your shop always looks active and trustworthy."
+            chips={[
+              "Auto review invites",
               "Smart reply templates",
-              "Content calendar support"
+              "Content calendar"
             ]}
           />
 
           <FeatureBlock
             icon={<span aria-hidden="true">📊</span>}
             eyebrow="Clarity"
-            headline="See what is working in real time."
-            pain="Money goes into tools and promos with little proof of impact."
-            solution="A single dashboard that tracks signups, return rate, redemptions, and campaign revenue."
-            transformation="Decisions get easier. You invest where results are clear."
-            bullets={[
-              "Customer lifetime value",
-              "Campaign and channel ROI",
+            headline="Clarity on what's working."
+            subline="Real-time insights show which campaigns drive sales and how customer loyalty is growing — all in one view."
+            chips={[
+              "Campaign ROI",
+              "Lifetime value",
               "Location comparisons"
             ]}
           />
@@ -103,14 +93,12 @@ export default function SystemsPage() {
           <FeatureBlock
             icon={<span aria-hidden="true">🌐</span>}
             eyebrow="Digital Front Door"
-            headline="A website that collects customers, not dust."
-            pain="Outdated sites do not capture leads or drive visits."
-            solution="Modern, mobile-first pages with loyalty signup, offers, and order links built in."
-            transformation="Your site becomes a magnet that sends more people through the door."
-            bullets={[
-              "Fast, clean, branded",
-              "Lead capture baked in",
-              "Easy updates"
+            headline="A digital front door that brings people in."
+            subline="Clean, mobile-friendly websites that capture signups and turn online interest into in-store visits."
+            chips={[
+              "Fast + branded",
+              "Lead capture",
+              "Mobile-first"
             ]}
           />
         </div>
