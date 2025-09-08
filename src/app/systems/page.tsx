@@ -3,7 +3,7 @@ import FeatureBlock from "@/components/FeatureBlock";
 export default function SystemsPage() {
   return (
     <main className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 py-16">
         {/* Hero Section */}
         <div className="text-center space-y-8 mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
@@ -31,6 +31,7 @@ export default function SystemsPage() {
         {/* Feature Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           <FeatureBlock
+            icon={<span aria-hidden="true">☎️</span>}
             eyebrow="Customer Rescue"
             headline="Even if you miss the call, you never miss the customer."
             pain="Phones ring during rushes and after hours. Calls go unanswered. Opportunities slip."
@@ -44,6 +45,7 @@ export default function SystemsPage() {
           />
 
           <FeatureBlock
+            icon={<span aria-hidden="true">⭐</span>}
             eyebrow="Retention Engine"
             headline="Turn first-timers into regulars."
             pain="Great service is not enough. Competitors are close and habits are fragile."
@@ -57,6 +59,7 @@ export default function SystemsPage() {
           />
 
           <FeatureBlock
+            icon={<span aria-hidden="true">🔁</span>}
             eyebrow="Always-On Marketing"
             headline="Stay top of mind without adding to your to-do list."
             pain="Owners do not have time to build and send promotions consistently."
@@ -70,6 +73,7 @@ export default function SystemsPage() {
           />
 
           <FeatureBlock
+            icon={<span aria-hidden="true">💬</span>}
             eyebrow="Online Presence"
             headline="Look active, earn stars, and win the scroll."
             pain="Reviews and posting slip when the shop is busy, yet this is where decisions happen."
@@ -83,6 +87,7 @@ export default function SystemsPage() {
           />
 
           <FeatureBlock
+            icon={<span aria-hidden="true">📊</span>}
             eyebrow="Clarity"
             headline="See what is working in real time."
             pain="Money goes into tools and promos with little proof of impact."
@@ -96,6 +101,7 @@ export default function SystemsPage() {
           />
 
           <FeatureBlock
+            icon={<span aria-hidden="true">🌐</span>}
             eyebrow="Digital Front Door"
             headline="A website that collects customers, not dust."
             pain="Outdated sites do not capture leads or drive visits."

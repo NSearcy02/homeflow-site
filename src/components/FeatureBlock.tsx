@@ -23,48 +23,66 @@ export default function FeatureBlock({
 }: FeatureBlockProps) {
   return (
     <motion.div
-      className="p-6 md:p-7 rounded-2xl ring-1 ring-black/5 shadow-sm hover:shadow-md transition bg-gradient-to-tr from-gray-50 to-white"
-      initial={{ opacity: 0, y: 16 }}
+      className="group relative rounded-2xl border border-black/5 bg-gradient-to-tr from-white to-slate-50 shadow-sm hover:shadow-xl transition-all duration-300 p-6 md:p-7 transform-gpu group-hover:translate-y-[-2px]"
+      initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
     >
-      {icon && <div className="mb-4">{icon}</div>}
+      {icon && (
+        <div className="h-10 w-10 rounded-xl bg-slate-100 ring-1 ring-black/5 flex items-center justify-center mb-4">
+          {icon}
+        </div>
+      )}
       
-      <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-3">
+      <div className="text-[11px] font-semibold tracking-wide text-slate-500 uppercase">
         {eyebrow}
       </div>
       
-      <h3 className="text-xl md:text-2xl font-semibold leading-[1.2] text-gray-900 mb-6">
+      <h3 className="text-[22px] md:text-[24px] font-semibold leading-[1.2] text-slate-900 mt-1">
         {headline}
       </h3>
       
-      <div className="space-y-4 mb-6">
-        <div>
-          <div className="text-sm font-medium text-red-600 mb-1">Pain</div>
-          <p className="text-gray-600 text-sm">{pain}</p>
-        </div>
-        
-        <div>
-          <div className="text-sm font-medium text-blue-600 mb-1">Solution</div>
-          <p className="text-gray-600 text-sm">{solution}</p>
-        </div>
-        
-        <div>
-          <div className="text-sm font-medium text-green-600 mb-1">Transformation</div>
-          <p className="text-gray-600 text-sm">{transformation}</p>
+      <p className="text-[15px] leading-[1.6] text-slate-600 mt-3">
+        {pain} {solution}
+      </p>
+      
+      <div className="border-t border-slate-100 mt-4 pt-4">
+        <div className="space-y-2">
+          <div className="text-[14px] leading-[1.6] text-slate-700">
+            <span className="inline-flex items-center rounded-md bg-slate-100 text-slate-700 text-[11px] font-medium px-2 py-1 mr-2">
+              Pain
+            </span>
+            {pain}
+          </div>
+          
+          <div className="text-[14px] leading-[1.6] text-slate-700">
+            <span className="inline-flex items-center rounded-md bg-slate-100 text-slate-700 text-[11px] font-medium px-2 py-1 mr-2">
+              Solution
+            </span>
+            {solution}
+          </div>
+          
+          <div className="text-[14px] leading-[1.6] text-slate-700">
+            <span className="inline-flex items-center rounded-md bg-slate-100 text-slate-700 text-[11px] font-medium px-2 py-1 mr-2">
+              Transformation
+            </span>
+            {transformation}
+          </div>
         </div>
       </div>
       
       {bullets && bullets.length > 0 && (
-        <ul className="space-y-2">
+        <div className="mt-4 flex flex-wrap gap-2">
           {bullets.map((bullet, index) => (
-            <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
-              <span className="text-green-500 text-xs mt-1">•</span>
-              <span>{bullet}</span>
-            </li>
+            <span
+              key={index}
+              className="rounded-full border border-slate-200 bg-white text-slate-700 text-[12px] px-3 py-1"
+            >
+              {bullet}
+            </span>
           ))}
-        </ul>
+        </div>
       )}
     </motion.div>
   );
