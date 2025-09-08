@@ -1,133 +1,134 @@
+import FeatureBlock from "@/components/FeatureBlock";
+
 export default function SystemsPage() {
   return (
     <main className="min-h-screen bg-white">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 py-16">
-        <div className="text-center space-y-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16">
+        {/* Hero Section */}
+        <div className="text-center space-y-8 mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-            Automation Systems
+            Systems Under One Roof.
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Discover the powerful automation systems we build to help coffee shops, cafes, and juice bars streamline operations, increase customer engagement, and boost revenue.
+            Everything your shop needs to capture customers, bring them back, and see results in one place. One roof, one workflow, one clear view of growth.
           </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
+            <a
+              href="#"
+              className="px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors duration-200"
+            >
+              Book a Demo
+            </a>
+            <a
+              href="/how-it-works"
+              className="px-8 py-4 bg-white text-black border-2 border-black rounded-full font-medium hover:bg-black hover:text-white transition-colors duration-200"
+            >
+              See How It Works
+            </a>
+          </div>
         </div>
 
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <section className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 border border-blue-100">
-            <div className="text-blue-600 text-3xl mb-4">📱</div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Customer Loyalty System
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Automated loyalty programs that reward repeat customers and encourage brand loyalty through points, rewards, and personalized offers.
-            </p>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li>• Points-based reward system</li>
-              <li>• Automated birthday rewards</li>
-              <li>• Personalized discount offers</li>
-              <li>• Customer behavior tracking</li>
-            </ul>
-          </section>
+        {/* Feature Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <FeatureBlock
+            eyebrow="Customer Rescue"
+            headline="Even if you miss the call, you never miss the customer."
+            pain="Phones ring during rushes and after hours. Calls go unanswered. Opportunities slip."
+            solution="Automatic text replies go out under your shop's name. Every missed call becomes a conversation."
+            transformation="Customers feel taken care of. You keep the sale alive and your pipeline full."
+            bullets={[
+              "Local number per location",
+              "Custom reply windows and scripts",
+              "Pipeline + task auto assignment"
+            ]}
+          />
 
-          <section className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-8 border border-green-100">
-            <div className="text-green-600 text-3xl mb-4">📧</div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Email & SMS Automation
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Intelligent marketing automation that sends the right message at the right time to nurture customer relationships and drive sales.
-            </p>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li>• Welcome series automation</li>
-              <li>• Abandoned cart recovery</li>
-              <li>• Seasonal campaign triggers</li>
-              <li>• Customer re-engagement flows</li>
-            </ul>
-          </section>
+          <FeatureBlock
+            eyebrow="Retention Engine"
+            headline="Turn first-timers into regulars."
+            pain="Great service is not enough. Competitors are close and habits are fragile."
+            solution="Simple digital loyalty with points, VIP tiers, and instant rewards at checkout."
+            transformation="Every visit earns value. Customers choose you again because it feels good to return."
+            bullets={[
+              "QR signups in seconds",
+              "Birthday and anniversary perks",
+              "VIP tiers customers love"
+            ]}
+          />
 
-          <section className="bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl p-8 border border-purple-100">
-            <div className="text-purple-600 text-3xl mb-4">📊</div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Analytics Dashboard
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Real-time business intelligence that provides actionable insights into customer behavior, sales performance, and marketing effectiveness.
-            </p>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li>• Customer lifetime value tracking</li>
-              <li>• Sales performance metrics</li>
-              <li>• Marketing campaign ROI</li>
-              <li>• Predictive analytics</li>
-            </ul>
-          </section>
+          <FeatureBlock
+            eyebrow="Always-On Marketing"
+            headline="Stay top of mind without adding to your to-do list."
+            pain="Owners do not have time to build and send promotions consistently."
+            solution="Prebuilt SMS and email flows that trigger at the right moment: slow days, birthdays, lapsed customers, seasonal offers."
+            transformation="Traffic lifts on autopilot. Messages feel personal and timely."
+            bullets={[
+              "Welcome series and win-backs",
+              "Slow-day boosters",
+              "Holiday and seasonal packs"
+            ]}
+          />
 
-          <section className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-8 border border-orange-100">
-            <div className="text-orange-600 text-3xl mb-4">🛒</div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Online Ordering System
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Seamless online ordering platform that integrates with your existing POS system and provides customers with a smooth ordering experience.
-            </p>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li>• Mobile-responsive design</li>
-              <li>• Real-time inventory sync</li>
-              <li>• Payment processing integration</li>
-              <li>• Order tracking notifications</li>
-            </ul>
-          </section>
+          <FeatureBlock
+            eyebrow="Online Presence"
+            headline="Look active, earn stars, and win the scroll."
+            pain="Reviews and posting slip when the shop is busy, yet this is where decisions happen."
+            solution="Auto review requests after visits, simple replies, and a steady calendar of posts."
+            transformation="You appear responsive and reliable. New customers choose you with confidence."
+            bullets={[
+              "Review invites by segment",
+              "Smart reply templates",
+              "Content calendar support"
+            ]}
+          />
 
-          <section className="bg-gradient-to-br from-red-50 to-pink-50 rounded-xl p-8 border border-red-100">
-            <div className="text-red-600 text-3xl mb-4">🎯</div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Social Media Integration
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Automated social media management that helps you maintain an active online presence and engage with your community effectively.
-            </p>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li>• Automated posting schedules</li>
-              <li>• Content calendar management</li>
-              <li>• Social media monitoring</li>
-              <li>• Engagement analytics</li>
-            </ul>
-          </section>
+          <FeatureBlock
+            eyebrow="Clarity"
+            headline="See what is working in real time."
+            pain="Money goes into tools and promos with little proof of impact."
+            solution="A single dashboard that tracks signups, return rate, redemptions, and campaign revenue."
+            transformation="Decisions get easier. You invest where results are clear."
+            bullets={[
+              "Customer lifetime value",
+              "Campaign and channel ROI",
+              "Location comparisons"
+            ]}
+          />
 
-          <section className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl p-8 border border-teal-100">
-            <div className="text-teal-600 text-3xl mb-4">⚡</div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Inventory Management
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Smart inventory tracking that automatically monitors stock levels, predicts demand, and helps prevent stockouts and waste.
-            </p>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li>• Real-time stock monitoring</li>
-              <li>• Automated reorder alerts</li>
-              <li>• Demand forecasting</li>
-              <li>• Waste tracking</li>
-            </ul>
-          </section>
+          <FeatureBlock
+            eyebrow="Digital Front Door"
+            headline="A website that collects customers, not dust."
+            pain="Outdated sites do not capture leads or drive visits."
+            solution="Modern, mobile-first pages with loyalty signup, offers, and order links built in."
+            transformation="Your site becomes a magnet that sends more people through the door."
+            bullets={[
+              "Fast, clean, branded",
+              "Lead capture baked in",
+              "Easy updates"
+            ]}
+          />
         </div>
 
-        <div className="mt-16 text-center">
+        {/* Closing CTA Section */}
+        <div className="mt-20 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Ready to Automate Your Business?
+            Bring every system under one roof.
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Our systems work together to create a seamless, automated experience that saves you time and increases your revenue.
+            We set it up. Your team runs it easily. Your customers keep coming back.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
-              href="/how-it-works"
+              href="#"
               className="px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors duration-200"
             >
-              Learn How It Works
+              Book a Demo
             </a>
             <a
-              href="/proof"
+              href="/how-it-works"
               className="px-8 py-4 bg-white text-black border-2 border-black rounded-full font-medium hover:bg-black hover:text-white transition-colors duration-200"
             >
-              See Case Studies
+              See How It Works
             </a>
           </div>
         </div>
