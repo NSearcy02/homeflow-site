@@ -18,7 +18,7 @@ export default function Hero() {
             <div className="mx-auto md:mx-0 mb-5 inline-flex items-center justify-center">
               <div className="h-16 w-16 rounded-2xl bg-white ring-1 ring-black/5 p-2 flex items-center justify-center">
                 <Image
-                  src="/logo-homeflow.png"
+                  src="/logo-homeflow.svg"
                   alt="HomeFlow logo"
                   width={64}
                   height={64}

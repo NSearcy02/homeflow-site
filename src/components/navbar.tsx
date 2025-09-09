@@ -7,7 +7,7 @@ export default function Navbar() {
     <header className="flex items-center justify-between px-8 py-4 shadow-sm bg-white">
       <Link href="/" className="flex items-center space-x-2">
         <Image
-          src="/logo-homeflow.png"
+          src="/logo-homeflow.svg"
           alt="HomeFlow logo"
           width={40}
           height={40}
