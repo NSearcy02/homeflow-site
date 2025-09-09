@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="relative">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="rounded-3xl bg-gradient-to-b from-stone-50 to-stone-100 ring-1 ring-stone-200/50">
+        <div className="rounded-3xl bg-gradient-to-b from-amber-50 to-orange-50 ring-1 ring-amber-200/30 shadow-xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -26,17 +26,17 @@ export default function Hero() {
             </div>
 
             {/* Eyebrow */}
-            <div className="text-[12px] font-semibold tracking-wide uppercase text-slate-500">
+            <div className="text-[12px] font-semibold tracking-wide uppercase text-amber-600">
               Systems Under One Roof
             </div>
 
             {/* Headline */}
-            <h1 className="mt-2 text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
+            <h1 className="mt-2 text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight text-amber-900">
               All your customer-winning systems under one roof.
             </h1>
 
             {/* Subline */}
-            <p className="mt-5 max-w-2xl text-lg md:text-xl leading-[1.6] text-slate-600">
+            <p className="mt-5 max-w-2xl text-lg md:text-xl leading-[1.6] text-amber-800">
               We help coffee shops, cafes, and juice bars run loyalty, messaging, websites, and analytics in one place, so customers keep coming back on repeat.
             </p>
 
@@ -45,14 +45,14 @@ export default function Hero() {
               <Link
                 href="/#demo"
                 aria-label="Book a Demo"
-                className="inline-flex items-center justify-center rounded-full bg-slate-900 text-white px-5 py-3 text-sm font-semibold hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/40"
+                className="inline-flex items-center justify-center rounded-full bg-amber-600 text-white px-5 py-3 text-sm font-semibold hover:bg-amber-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-600/40 shadow-lg hover:shadow-xl transition-all duration-200"
               >
                 Book a Demo
               </Link>
               <Link
                 href="/how-it-works"
                 aria-label="See How It Works"
-                className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:border-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/10"
+                className="inline-flex items-center justify-center rounded-full border border-amber-300 bg-white/90 px-5 py-3 text-sm font-semibold text-amber-800 hover:border-amber-400 hover:bg-amber-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-600/20 shadow-md hover:shadow-lg transition-all duration-200"
               >
                 See How It Works
               </Link>
@@ -69,7 +69,7 @@ export default function Hero() {
               ].map((chip) => (
                 <span
                   key={chip}
-                  className="rounded-full border border-slate-200 bg-white text-slate-700 text-[12px] px-3 py-1"
+                  className="rounded-full border border-amber-200 bg-white/80 text-amber-700 text-[12px] px-3 py-1 shadow-sm hover:shadow-md transition-all duration-200"
                 >
                   {chip}
                 </span>

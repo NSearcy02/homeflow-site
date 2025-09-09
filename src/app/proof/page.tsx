@@ -1,12 +1,12 @@
 export default function ProofPage() {
   return (
-    <main className="min-h-screen bg-stone-50">
+    <main className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 py-16">
         <div className="text-center space-y-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+          <h1 className="text-4xl md:text-5xl font-bold text-amber-900">
             Real Proof: Case Studies
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-amber-800 max-w-2xl mx-auto">
             Discover how we&apos;ve helped local coffee shops, cafes, and juice bars transform their businesses with our automation systems and digital solutions.
           </p>
         </div>

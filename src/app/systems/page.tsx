@@ -2,26 +2,26 @@ import FeatureBlock from "@/components/FeatureBlock";
 
 export default function SystemsPage() {
   return (
-    <main className="min-h-screen bg-stone-50">
+    <main className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 py-16">
         {/* Hero Section */}
         <div className="text-center space-y-8 mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+          <h1 className="text-4xl md:text-5xl font-bold text-amber-900">
             Systems Under One Roof.
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-amber-800 max-w-3xl mx-auto">
             Everything your shop needs to capture customers, bring them back, and see results in one place. One roof, one workflow, one clear view of growth.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
             <a
               href="#"
-              className="px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors duration-200"
+              className="px-8 py-4 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Book a Demo
             </a>
             <a
               href="/how-it-works"
-              className="px-8 py-4 bg-white text-black border-2 border-black rounded-full font-medium hover:bg-black hover:text-white transition-colors duration-200"
+              className="px-8 py-4 bg-white/90 text-amber-800 border-2 border-amber-300 rounded-full font-medium hover:bg-amber-50 hover:border-amber-400 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               See How It Works
             </a>
@@ -114,13 +114,13 @@ export default function SystemsPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="#"
-              className="px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors duration-200"
+              className="px-8 py-4 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Book a Demo
             </a>
             <a
               href="/how-it-works"
-              className="px-8 py-4 bg-white text-black border-2 border-black rounded-full font-medium hover:bg-black hover:text-white transition-colors duration-200"
+              className="px-8 py-4 bg-white/90 text-amber-800 border-2 border-amber-300 rounded-full font-medium hover:bg-amber-50 hover:border-amber-400 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               See How It Works
             </a>
