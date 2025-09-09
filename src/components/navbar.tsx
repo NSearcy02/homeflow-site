@@ -1,11 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   return (
     <header className="flex items-center justify-between px-8 py-4 shadow-sm bg-white">
-      <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700 transition-colors">
-        HomeFlow Systems
+      <Link href="/" className="flex items-center space-x-2">
+        <Image
+          src="/logo-homeflow.png"
+          alt="HomeFlow logo"
+          width={40}
+          height={40}
+          className="h-auto w-10"
+          priority
+        />
+        <span className="text-xl font-semibold text-gray-900">HomeFlow Systems</span>
       </Link>
       <nav className="hidden md:flex gap-6 text-gray-700">
         <Link href="/" className="hover:text-gray-900 transition-colors">
