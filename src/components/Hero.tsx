@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="relative">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="rounded-3xl bg-gradient-to-b from-slate-50 to-white ring-1 ring-black/5">
+        <div className="rounded-3xl bg-gradient-to-b from-stone-50 to-stone-100 ring-1 ring-stone-200/50">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}

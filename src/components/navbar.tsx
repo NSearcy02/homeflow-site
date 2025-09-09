@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   return (
-    <header className="flex items-center justify-between px-8 py-4 shadow-sm bg-white">
+    <header className="flex items-center justify-between px-8 py-4 shadow-sm bg-stone-50">
       <Link href="/" className="flex items-center space-x-2">
         <Image
           src="/logo-homeflow.png"

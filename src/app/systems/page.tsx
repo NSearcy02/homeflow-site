@@ -2,7 +2,7 @@ import FeatureBlock from "@/components/FeatureBlock";
 
 export default function SystemsPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-stone-50">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 py-16">
         {/* Hero Section */}
         <div className="text-center space-y-8 mb-16">

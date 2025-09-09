@@ -1,6 +1,6 @@
 export default function ProofPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-stone-50">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 py-16">
         <div className="text-center space-y-8">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
