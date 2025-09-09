@@ -7,11 +7,10 @@ export default function Navbar() {
     <header className="flex items-center justify-between px-8 py-4 shadow-sm bg-white">
       <Link href="/" className="flex items-center space-x-2">
         <Image
-          src="/logo-homeflow.svg"
+          src="/logo-homeflow.png"
           alt="HomeFlow logo"
-          width={40}
-          height={40}
-          className="h-auto w-10"
+          width={48}
+          height={48}
           priority
         />
         <span className="text-xl font-semibold text-gray-900">HomeFlow Systems</span>
