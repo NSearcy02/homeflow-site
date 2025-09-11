@@ -105,10 +105,10 @@ export default function SystemsPage() {
 
         {/* Closing CTA Section */}
         <div className="mt-20 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-bold text-amber-900 mb-6">
             Bring every system under one roof.
           </h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-amber-700 mb-8 max-w-2xl mx-auto">
             We set it up. Your team runs it easily. Your customers keep coming back.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">

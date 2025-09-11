@@ -13,70 +13,70 @@ export default function ProofPage() {
         
         <div className="mt-16 space-y-12">
           <section className="bg-gray-50 rounded-xl p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-2xl font-semibold text-amber-900 mb-4">
               Downtown Coffee Co.
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-amber-700 mb-4">
               A family-owned coffee shop that increased their customer retention by 40% through our loyalty program and automated marketing campaigns.
             </p>
             <div className="grid md:grid-cols-3 gap-4 text-sm">
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-semibold text-green-600">40%</p>
-                <p className="text-gray-600">Increase in repeat customers</p>
+                <p className="text-amber-700">Increase in repeat customers</p>
               </div>
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-semibold text-green-600">2.5x</p>
-                <p className="text-gray-600">More online orders</p>
+                <p className="text-amber-700">More online orders</p>
               </div>
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-semibold text-green-600">$15k</p>
-                <p className="text-gray-600">Additional monthly revenue</p>
+                <p className="text-amber-700">Additional monthly revenue</p>
               </div>
             </div>
           </section>
 
           <section className="bg-gray-50 rounded-xl p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-2xl font-semibold text-amber-900 mb-4">
               Fresh Juice Bar
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-amber-700 mb-4">
               A health-focused juice bar that streamlined their ordering process and increased average order value by 35% with our integrated systems.
             </p>
             <div className="grid md:grid-cols-3 gap-4 text-sm">
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-semibold text-green-600">35%</p>
-                <p className="text-gray-600">Higher average order value</p>
+                <p className="text-amber-700">Higher average order value</p>
               </div>
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-semibold text-green-600">60%</p>
-                <p className="text-gray-600">Faster order processing</p>
+                <p className="text-amber-700">Faster order processing</p>
               </div>
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-semibold text-green-600">500+</p>
-                <p className="text-gray-600">New loyalty members</p>
+                <p className="text-amber-700">New loyalty members</p>
               </div>
             </div>
           </section>
 
           <section className="bg-gray-50 rounded-xl p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-2xl font-semibold text-amber-900 mb-4">
               Artisan Cafe
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-amber-700 mb-4">
               A boutique cafe that expanded their reach and increased foot traffic by 50% through our digital marketing automation and social media integration.
             </p>
             <div className="grid md:grid-cols-3 gap-4 text-sm">
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-semibold text-green-600">50%</p>
-                <p className="text-gray-600">Increase in foot traffic</p>
+                <p className="text-amber-700">Increase in foot traffic</p>
               </div>
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-semibold text-green-600">3x</p>
-                <p className="text-gray-600">Social media engagement</p>
+                <p className="text-amber-700">Social media engagement</p>
               </div>
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-semibold text-green-600">$25k</p>
-                <p className="text-gray-600">Additional annual revenue</p>
+                <p className="text-amber-700">Additional annual revenue</p>
               </div>
             </div>
           </section>
