@@ -1,12 +1,12 @@
 export default function HowItWorksPage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 py-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="text-center space-y-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900">
             How It Works
           </h1>
-          <p className="text-lg text-slate-700 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-slate-700 max-w-3xl mx-auto">
             Our simple, proven process helps coffee shops, cafes, and juice bars implement automation systems that drive real results. Here&apos;s how we work together to transform your business.
           </p>
         </div>
