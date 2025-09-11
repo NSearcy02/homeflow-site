@@ -12,6 +12,7 @@ export default function Navbar() {
           width={48}
           height={48}
           priority
+          className="mix-blend-multiply"
         />
         <span className="text-xl font-semibold text-slate-900">HomeFlow Systems</span>
       </Link>

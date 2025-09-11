@@ -22,6 +22,7 @@ export default function Hero() {
                 width={48}
                 height={48}
                 priority
+                className="mix-blend-multiply"
               />
             </div>
 
