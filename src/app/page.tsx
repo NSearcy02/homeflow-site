@@ -2,7 +2,7 @@ import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <main className="bg-stone-50">
+    <main className="bg-background">
       <Hero />
       {/* Other sections go here */}
     </main>

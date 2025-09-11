@@ -19,7 +19,7 @@ export default function FeatureBlock({
 }: FeatureBlockProps) {
   return (
     <motion.div
-      className="rounded-2xl border border-slate-200/40 bg-stone-50 shadow-lg hover:shadow-xl transform-gpu hover:-translate-y-2 transition-all duration-300 p-6 md:p-7"
+      className="rounded-2xl border border-slate-200/40 bg-background shadow-lg hover:shadow-xl transform-gpu hover:-translate-y-2 transition-all duration-300 p-6 md:p-7"
       initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
