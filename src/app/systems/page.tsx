@@ -2,26 +2,26 @@ import FeatureBlock from "@/components/FeatureBlock";
 
 export default function SystemsPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50">
+    <main className="min-h-screen bg-stone-50">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 py-16">
         {/* Hero Section */}
         <div className="text-center space-y-8 mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-amber-900">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
             Systems Under One Roof.
           </h1>
-          <p className="text-lg text-amber-800 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-700 max-w-3xl mx-auto">
             Everything your shop needs to capture customers, bring them back, and see results in one place. One roof, one workflow, one clear view of growth.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
             <a
               href="#"
-              className="px-8 py-4 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="px-8 py-4 bg-slate-900 text-white rounded-full font-medium hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Book a Demo
             </a>
             <a
               href="/how-it-works"
-              className="px-8 py-4 bg-white/90 text-amber-800 border-2 border-amber-300 rounded-full font-medium hover:bg-amber-50 hover:border-amber-400 transition-all duration-200 shadow-md hover:shadow-lg"
+              className="px-8 py-4 bg-white/90 text-slate-800 border-2 border-slate-300 rounded-full font-medium hover:bg-slate-50 hover:border-slate-400 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               See How It Works
             </a>
@@ -105,22 +105,22 @@ export default function SystemsPage() {
 
         {/* Closing CTA Section */}
         <div className="mt-20 text-center">
-          <h2 className="text-3xl font-bold text-amber-900 mb-6">
+          <h2 className="text-3xl font-bold text-slate-900 mb-6">
             Bring every system under one roof.
           </h2>
-          <p className="text-lg text-amber-700 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-700 mb-8 max-w-2xl mx-auto">
             We set it up. Your team runs it easily. Your customers keep coming back.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="#"
-              className="px-8 py-4 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="px-8 py-4 bg-slate-900 text-white rounded-full font-medium hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Book a Demo
             </a>
             <a
               href="/how-it-works"
-              className="px-8 py-4 bg-white/90 text-amber-800 border-2 border-amber-300 rounded-full font-medium hover:bg-amber-50 hover:border-amber-400 transition-all duration-200 shadow-md hover:shadow-lg"
+              className="px-8 py-4 bg-white/90 text-slate-800 border-2 border-slate-300 rounded-full font-medium hover:bg-slate-50 hover:border-slate-400 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               See How It Works
             </a>

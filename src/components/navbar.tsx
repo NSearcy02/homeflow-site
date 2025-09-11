@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   return (
-    <header className="flex items-center justify-between px-8 py-4 shadow-lg bg-gradient-to-r from-amber-50 to-orange-50 border-b border-amber-200/30">
+    <header className="flex items-center justify-between px-8 py-4 shadow-lg bg-stone-50 border-b border-slate-200/30">
       <Link href="/" className="flex items-center space-x-2">
         <Image
           src="/logo-homeflow.png"
@@ -13,19 +13,19 @@ export default function Navbar() {
           height={48}
           priority
         />
-        <span className="text-xl font-semibold text-amber-900">HomeFlow Systems</span>
+        <span className="text-xl font-semibold text-slate-900">HomeFlow Systems</span>
       </Link>
-      <nav className="hidden md:flex gap-6 text-amber-800">
-        <Link href="/" className="hover:text-amber-600 transition-colors font-medium">
+      <nav className="hidden md:flex gap-6 text-slate-700">
+        <Link href="/" className="hover:text-slate-900 transition-colors font-medium">
           Home
         </Link>
-        <Link href="/proof" className="hover:text-amber-600 transition-colors font-medium">
+        <Link href="/proof" className="hover:text-slate-900 transition-colors font-medium">
           Proof
         </Link>
-        <Link href="/systems" className="hover:text-amber-600 transition-colors font-medium">
+        <Link href="/systems" className="hover:text-slate-900 transition-colors font-medium">
           Systems
         </Link>
-        <Link href="/how-it-works" className="hover:text-amber-600 transition-colors font-medium">
+        <Link href="/how-it-works" className="hover:text-slate-900 transition-colors font-medium">
           How It Works
         </Link>
       </nav>
