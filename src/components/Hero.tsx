@@ -35,10 +35,15 @@ export default function Hero() {
               All your customer-winning systems under one roof.
             </h1>
 
-            {/* Subline */}
-            <p className="text-lg md:text-xl leading-relaxed text-slate-600 mb-8 max-w-2xl">
-              We help coffee shops, cafes, and juice bars run loyalty, messaging, websites, and analytics in one place, so customers keep coming back on repeat.
-            </p>
+            {/* Subheadline with fade-in animation */}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="text-lg md:text-xl leading-relaxed text-slate-600 mb-8 max-w-2xl"
+            >
+              We give local businesses the tools to run loyalty programs, messaging, websites, and analytics — all under one roof.
+            </motion.p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
