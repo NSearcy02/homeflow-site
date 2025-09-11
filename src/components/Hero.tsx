@@ -5,15 +5,14 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative">
+    <section className="relative py-16 sm:py-20 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="rounded-2xl sm:rounded-3xl bg-background ring-1 ring-slate-200/30 shadow-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="mx-auto max-w-3xl text-center md:text-left px-4 sm:px-6 md:px-12 pt-8 sm:pt-12 md:pt-16 pb-8 sm:pb-12"
-          >
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mx-auto max-w-3xl text-center md:text-left"
+        >
             {/* Logo */}
             <div className="mx-auto md:mx-0 mb-4 sm:mb-5 inline-flex items-center justify-center">
               <Image
@@ -27,40 +26,40 @@ export default function Hero() {
             </div>
 
             {/* Eyebrow */}
-            <div className="text-[11px] sm:text-[12px] font-semibold tracking-wide uppercase text-slate-600">
+            <div className="text-xs font-medium tracking-wide uppercase text-slate-500 mb-3">
               Systems Under One Roof
             </div>
 
             {/* Headline */}
-            <h1 className="mt-2 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-[1.1] tracking-tight text-slate-900 mb-6">
               All your customer-winning systems under one roof.
             </h1>
 
             {/* Subline */}
-            <p className="mt-4 sm:mt-5 max-w-2xl text-base sm:text-lg md:text-xl leading-[1.6] text-slate-700">
+            <p className="text-lg md:text-xl leading-relaxed text-slate-600 mb-8 max-w-2xl">
               We help coffee shops, cafes, and juice bars run loyalty, messaging, websites, and analytics in one place, so customers keep coming back on repeat.
             </p>
 
             {/* CTAs */}
-            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link
                 href="/#demo"
                 aria-label="Book a Demo"
-                className="inline-flex items-center justify-center rounded-full bg-slate-900 text-white px-6 py-3 sm:px-5 text-sm font-semibold hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/40 shadow-lg hover:shadow-xl transition-all duration-200"
+                className="inline-flex items-center justify-center rounded-lg bg-slate-900 text-white px-6 py-3 text-sm font-medium hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/40 transition-all duration-200"
               >
                 Book a Demo
               </Link>
               <Link
                 href="/how-it-works"
                 aria-label="See How It Works"
-                className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/90 px-6 py-3 sm:px-5 text-sm font-semibold text-slate-800 hover:border-slate-400 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 shadow-md hover:shadow-lg transition-all duration-200"
+                className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 hover:border-slate-400 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 transition-all duration-200"
               >
                 See How It Works
               </Link>
             </div>
 
             {/* Trust Chips */}
-            <div className="mt-4 sm:mt-6 flex flex-wrap gap-2 justify-center md:justify-start">
+            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
               {[
                 "Missed call text back",
                 "Loyalty + VIP",
@@ -70,7 +69,7 @@ export default function Hero() {
               ].map((chip) => (
                 <span
                   key={chip}
-                  className="rounded-full border border-slate-200 bg-white/80 text-slate-700 text-[11px] sm:text-[12px] px-2 sm:px-3 py-1 shadow-sm hover:shadow-md transition-all duration-200"
+                  className="rounded-md bg-slate-100 text-slate-600 text-xs px-3 py-1.5 font-medium"
                 >
                   {chip}
                 </span>
@@ -78,7 +77,6 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 }
