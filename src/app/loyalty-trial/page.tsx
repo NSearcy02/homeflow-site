@@ -33,7 +33,7 @@ export default function LoyaltyTrialPage() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-slate-900">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-[1.1] tracking-tight text-slate-900">
             Turn One-Timers Into Lifers{" "}
             <span className="text-slate-900">(On the House)</span>
           </h1>
