@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Script from "next/script";
 
 export default function LoyaltyTrialPage() {
   return (
@@ -65,15 +66,32 @@ export default function LoyaltyTrialPage() {
           transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           className="mb-12"
         >
-          <div className="bg-white rounded-xl shadow-lg border border-slate-200/40 p-6 sm:p-8">
+          <div className="mt-10 rounded-xl shadow-md">
             <iframe
-              src="https://your-ghl-form-link-here.com"
-              frameBorder="0"
-              className="w-full h-[600px] rounded-lg shadow-sm"
-              title="Loyalty Trial Signup Form"
+              src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
+              style={{width:"100%",height:"100%",border:"none",borderRadius:"3px"}}
+              id="inline-VZeLp5jYY9CI2ZRNdxkx"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="HomeFlow Loyalty Trial Form"
+              data-height="901"
+              data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
+              data-form-id="VZeLp5jYY9CI2ZRNdxkx"
+              title="HomeFlow Loyalty Trial Form"
             />
           </div>
         </motion.div>
+        
+        {/* GHL Form Script */}
+        <Script
+          src="https://link.msgsndr.com/js/form_embed.js"
+          strategy="afterInteractive"
+        />
 
         {/* Footer Message */}
         <motion.div
