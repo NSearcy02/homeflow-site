@@ -66,7 +66,7 @@ export default function LoyaltyTrialPage() {
           transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           className="mb-12"
         >
-          <div className="mt-10 rounded-xl shadow-md">
+          <div className="mt-10">
             <iframe
               src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
               style={{width:"100%",height:"100%",border:"none",borderRadius:"3px"}}
