@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Script from "next/script";
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import confetti from "canvas-confetti";
 
 function LoyaltyTrialContent() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -178,22 +179,72 @@ function LoyaltyTrialContent() {
     const submitted = searchParams.get('submitted');
     if (submitted === 'true') {
       setShowModal(true);
-      // Auto-hide after 5 seconds
-      const timer = setTimeout(() => {
-        setShowModal(false);
-        router.replace('/loyalty-trial');
-      }, 5000);
       
-      return () => clearTimeout(timer);
+      // Fire confetti burst
+      const fireConfetti = () => {
+        const count = 200;
+        const defaults = {
+          origin: { y: 0.7 }
+        };
+
+        function fire(particleRatio: number, opts: confetti.Options) {
+          confetti({
+            ...defaults,
+            ...opts,
+            particleCount: Math.floor(count * particleRatio)
+          });
+        }
+
+        fire(0.25, {
+          spread: 26,
+          startVelocity: 55,
+        });
+        fire(0.2, {
+          spread: 60,
+        });
+        fire(0.35, {
+          spread: 100,
+          decay: 0.91,
+          scalar: 0.8
+        });
+        fire(0.1, {
+          spread: 120,
+          startVelocity: 25,
+          decay: 0.92,
+          scalar: 1.2
+        });
+        fire(0.1, {
+          spread: 120,
+          startVelocity: 45,
+        });
+      };
+
+      // Fire confetti after a short delay
+      setTimeout(fireConfetti, 300);
     }
-  }, [searchParams, router]);
+  }, [searchParams]);
 
   // Handle modal close
   const handleCloseModal = () => {
     setShowModal(false);
+    document.body.style.overflow = 'unset';
     // Remove the submitted query parameter
     router.replace('/loyalty-trial');
   };
+
+  // Handle body scroll when modal is open
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function to restore scroll when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showModal]);
 
   return (
     <main className="min-h-screen bg-background">
@@ -251,45 +302,15 @@ function LoyaltyTrialContent() {
         </motion.div>
 
 
-        {/* Form Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-          className="mb-12"
-        >
-          <div className="mt-10">
-            {/* Subtle Success Message - Show when form is submitted */}
-            {showModal && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-center"
-              >
-                <div className="flex items-center justify-center mb-2">
-                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-2">
-                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold text-green-800">You&apos;re in!</h3>
-                </div>
-                <p className="text-green-700 text-sm">
-                  We&apos;ll text or email you soon to set up your Loyalty Club.
-                </p>
-                <button
-                  onClick={handleCloseModal}
-                  className="mt-2 text-green-600 hover:text-green-800 text-xs underline"
-                >
-                  Close
-                </button>
-              </motion.div>
-            )}
-
-            {/* GHL Form - Hide when form is submitted */}
-            {!hasDetectedSubmission && !showModal && (
+        {/* Form Section - Hide when form is submitted */}
+        {!hasDetectedSubmission && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            className="mb-12"
+          >
+            <div className="mt-10">
               <iframe
                 ref={iframeRef}
                 src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
@@ -309,9 +330,9 @@ function LoyaltyTrialContent() {
                 title="HomeFlow Loyalty Trial Form"
                 onLoad={handleIframeLoad}
               />
-            )}
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
+        )}
 
         {/* Custom Thank You Section - Show when form is submitted */}
         {hasDetectedSubmission && (
@@ -387,6 +408,104 @@ function LoyaltyTrialContent() {
         </motion.div>
       </div>
 
+      {/* Full-Screen Success Modal */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+            onClick={handleCloseModal}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              transition={{ 
+                duration: 0.4, 
+                ease: [0.25, 0.46, 0.45, 0.94],
+                type: "spring",
+                stiffness: 300,
+                damping: 30
+              }}
+              className="bg-white rounded-2xl shadow-2xl p-8 max-w-md mx-4 text-center relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Animated Green Checkmark */}
+              <div className="mx-auto mb-6 inline-flex items-center justify-center">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ 
+                    delay: 0.2,
+                    duration: 0.5,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 25
+                  }}
+                  className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center"
+                >
+                  <motion.svg
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ 
+                      delay: 0.4,
+                      duration: 0.6,
+                      ease: "easeInOut"
+                    }}
+                    className="w-10 h-10 text-green-600"
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    strokeWidth={3}
+                  >
+                    <motion.path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </motion.svg>
+                </motion.div>
+              </div>
+
+              {/* Headline */}
+              <motion.h2
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.4 }}
+                className="text-3xl font-bold text-slate-900 mb-4"
+              >
+                You&apos;re in.
+              </motion.h2>
+
+              {/* Subtext */}
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.4 }}
+                className="text-slate-700 mb-8 leading-relaxed"
+              >
+                We&apos;ll text or email you soon to set up your Loyalty Club.
+              </motion.p>
+
+              {/* Close Button */}
+              <motion.button
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.4 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={handleCloseModal}
+                className="w-full px-6 py-3 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 transition-colors duration-200"
+              >
+                Close
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </main>
   );
