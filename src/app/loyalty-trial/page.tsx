@@ -223,21 +223,6 @@ export default function LoyaltyTrialPage() {
 
         </motion.div>
 
-        {/* Hidden Developer Test Button - Only visible in development */}
-        {process.env.NODE_ENV === 'development' && !hasDetectedSubmission && (
-          <div className="fixed bottom-4 right-4 z-50">
-            <button
-              onClick={() => {
-                console.log('🧪 Developer test: Triggering thank you modal');
-                setHasDetectedSubmission(true);
-              }}
-              className="px-3 py-2 bg-gray-800 text-white text-xs rounded-lg opacity-50 hover:opacity-100 transition-opacity"
-              title="Developer Test - Trigger Thank You Modal"
-            >
-              🧪 Test
-            </button>
-          </div>
-        )}
 
         {/* Form Section - Hide when form is submitted */}
         {!hasDetectedSubmission && (
