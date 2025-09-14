@@ -4,10 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Script from "next/script";
 import { useState, useEffect, useRef } from "react";
-import ThankYouModal from "@/components/ThankYouModal";
 
 export default function LoyaltyTrialPage() {
-  const [showThankYouModal, setShowThankYouModal] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [hasDetectedSubmission, setHasDetectedSubmission] = useState(false);
 
@@ -19,7 +17,6 @@ export default function LoyaltyTrialPage() {
           window.location.href.includes('success')) {
         if (!hasDetectedSubmission) {
           setHasDetectedSubmission(true);
-          setShowThankYouModal(true);
         }
       }
     };
@@ -61,7 +58,6 @@ export default function LoyaltyTrialPage() {
             bodyText.includes("you're in")) {
           console.log('✅ Form submission detected via iframe content!');
           setHasDetectedSubmission(true);
-          setShowThankYouModal(true);
         }
       }
     } catch {
@@ -88,7 +84,6 @@ export default function LoyaltyTrialPage() {
           console.log('✅ Form submission detected via postMessage!');
           if (!hasDetectedSubmission) {
             setHasDetectedSubmission(true);
-            setShowThankYouModal(true);
           }
         }
         
@@ -97,7 +92,6 @@ export default function LoyaltyTrialPage() {
           console.log('✅ Form submission detected via postMessage object!');
           if (!hasDetectedSubmission) {
             setHasDetectedSubmission(true);
-            setShowThankYouModal(true);
           }
         }
       }
@@ -170,43 +164,84 @@ export default function LoyaltyTrialPage() {
             className="pt-4"
           >
             <button
-              onClick={() => setShowThankYouModal(true)}
+              onClick={() => setHasDetectedSubmission(true)}
               className="px-4 py-2 bg-green-500 text-white rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
             >
-              🧪 Test Thank You Modal
+              🧪 Test Thank You Message
             </button>
           </motion.div>
         </motion.div>
 
-        {/* Form Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-          className="mb-12"
-        >
-          <div className="mt-10">
-            <iframe
-              ref={iframeRef}
-              src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
-              style={{width:"100%",height:"100%",border:"none",borderRadius:"3px"}}
-              id="inline-VZeLp5jYY9CI2ZRNdxkx"
-              data-layout="{'id':'INLINE'}"
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="HomeFlow Loyalty Trial Form"
-              data-height="901"
-              data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
-              data-form-id="VZeLp5jYY9CI2ZRNdxkx"
-              title="HomeFlow Loyalty Trial Form"
-              onLoad={handleIframeLoad}
-            />
-          </div>
-        </motion.div>
+        {/* Form Section - Hide when form is submitted */}
+        {!hasDetectedSubmission && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            className="mb-12"
+          >
+            <div className="mt-10">
+              <iframe
+                ref={iframeRef}
+                src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
+                style={{width:"100%",height:"100%",border:"none",borderRadius:"3px"}}
+                id="inline-VZeLp5jYY9CI2ZRNdxkx"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="HomeFlow Loyalty Trial Form"
+                data-height="901"
+                data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
+                data-form-id="VZeLp5jYY9CI2ZRNdxkx"
+                title="HomeFlow Loyalty Trial Form"
+                onLoad={handleIframeLoad}
+              />
+            </div>
+          </motion.div>
+        )}
+
+        {/* Custom Thank You Section - Show when form is submitted */}
+        {hasDetectedSubmission && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mb-12"
+          >
+            <div className="mt-10 p-8 bg-white rounded-xl shadow-lg border border-slate-200/40 text-center">
+              <div className="mx-auto mb-6 inline-flex items-center justify-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+              </div>
+              <h2 className="text-2xl font-bold text-slate-900 mb-3">You&apos;re All Set! 🎉</h2>
+              <p className="text-slate-700 mb-4">
+                Thanks for signing up for the HomeFlow Loyalty Trial. We&apos;ll be in touch within 24 hours to get your loyalty program up and running.
+              </p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {[
+                  "Free setup",
+                  "60-day trial", 
+                  "Fully managed",
+                  "VIP customer experience",
+                ].map((chip) => (
+                  <span
+                    key={chip}
+                    className="rounded-md bg-slate-100 text-slate-600 text-xs px-3 py-1.5 font-medium"
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
         
         {/* GHL Form Script */}
         <Script
@@ -243,14 +278,6 @@ export default function LoyaltyTrialPage() {
         </motion.div>
       </div>
 
-      {/* Thank You Modal */}
-      <ThankYouModal
-        isOpen={showThankYouModal}
-        onClose={() => setShowThankYouModal(false)}
-        headline="You're All Set! 🎉"
-        subtext="Thanks for signing up for the HomeFlow Loyalty Trial. We'll be in touch within 24 hours to get your loyalty program up and running."
-        autoCloseDelay={4000}
-      />
     </main>
   );
 }
