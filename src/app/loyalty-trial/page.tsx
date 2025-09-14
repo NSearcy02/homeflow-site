@@ -1,13 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Script from "next/script";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 
-export default function LoyaltyTrialPage() {
+function LoyaltyTrialContent() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [hasDetectedSubmission, setHasDetectedSubmission] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
   // Check for thank-you page redirect
   useEffect(() => {
@@ -168,6 +172,32 @@ export default function LoyaltyTrialPage() {
 
     return () => clearInterval(srcCheckInterval);
   }, [hasDetectedSubmission]);
+
+  // Check for ?submitted=true query parameter
+  useEffect(() => {
+    const submitted = searchParams.get('submitted');
+    if (submitted === 'true') {
+      setShowModal(true);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function to restore scroll when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [searchParams]);
+
+  // Handle modal close
+  const handleCloseModal = () => {
+    setShowModal(false);
+    document.body.style.overflow = 'unset';
+    // Remove the submitted query parameter
+    router.replace('/loyalty-trial');
+  };
+
   return (
     <main className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
@@ -330,6 +360,68 @@ export default function LoyaltyTrialPage() {
         </motion.div>
       </div>
 
+      {/* Success Modal */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+            onClick={handleCloseModal}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="bg-white rounded-xl shadow-2xl p-8 max-w-md mx-4 text-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Green Checkmark */}
+              <div className="mx-auto mb-6 inline-flex items-center justify-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Message */}
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                You&apos;re in.
+              </h2>
+              <p className="text-slate-700 mb-6 leading-relaxed">
+                We&apos;ll text or email you soon to set up your Loyalty Club.
+              </p>
+
+              {/* Close Button */}
+              <button
+                onClick={handleCloseModal}
+                className="w-full px-6 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-colors duration-200"
+              >
+                Close
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </main>
+  );
+}
+
+export default function LoyaltyTrialPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-slate-900 mx-auto mb-4"></div>
+          <p className="text-slate-600">Loading...</p>
+        </div>
+      </main>
+    }>
+      <LoyaltyTrialContent />
+    </Suspense>
   );
 }
