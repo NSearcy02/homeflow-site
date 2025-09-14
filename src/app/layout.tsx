@@ -17,6 +17,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "HomeFlow Systems - Coffee Shop Automation",
   description: "We help coffee shops, cafes, and juice bars modernize with websites, loyalty programs, and customer automations.",
+  icons: {
+    icon: [
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logo-homeflow.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/logo-homeflow.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({
