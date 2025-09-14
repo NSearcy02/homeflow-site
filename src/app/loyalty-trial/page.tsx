@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Script from "next/script";
 import { useState, useEffect, useRef, Suspense } from "react";
@@ -178,22 +178,19 @@ function LoyaltyTrialContent() {
     const submitted = searchParams.get('submitted');
     if (submitted === 'true') {
       setShowModal(true);
-      // Prevent body scroll when modal is open
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+      // Auto-hide after 5 seconds
+      const timer = setTimeout(() => {
+        setShowModal(false);
+        router.replace('/loyalty-trial');
+      }, 5000);
+      
+      return () => clearTimeout(timer);
     }
-
-    // Cleanup function to restore scroll when component unmounts
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [searchParams]);
+  }, [searchParams, router]);
 
   // Handle modal close
   const handleCloseModal = () => {
     setShowModal(false);
-    document.body.style.overflow = 'unset';
     // Remove the submitted query parameter
     router.replace('/loyalty-trial');
   };
@@ -254,15 +251,45 @@ function LoyaltyTrialContent() {
         </motion.div>
 
 
-        {/* Form Section - Hide when form is submitted */}
-        {!hasDetectedSubmission && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-            className="mb-12"
-          >
-            <div className="mt-10">
+        {/* Form Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+          className="mb-12"
+        >
+          <div className="mt-10">
+            {/* Subtle Success Message - Show when form is submitted */}
+            {showModal && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-center"
+              >
+                <div className="flex items-center justify-center mb-2">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-2">
+                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-green-800">You&apos;re in!</h3>
+                </div>
+                <p className="text-green-700 text-sm">
+                  We&apos;ll text or email you soon to set up your Loyalty Club.
+                </p>
+                <button
+                  onClick={handleCloseModal}
+                  className="mt-2 text-green-600 hover:text-green-800 text-xs underline"
+                >
+                  Close
+                </button>
+              </motion.div>
+            )}
+
+            {/* GHL Form - Hide when form is submitted */}
+            {!hasDetectedSubmission && !showModal && (
               <iframe
                 ref={iframeRef}
                 src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
@@ -282,9 +309,9 @@ function LoyaltyTrialContent() {
                 title="HomeFlow Loyalty Trial Form"
                 onLoad={handleIframeLoad}
               />
-            </div>
-          </motion.div>
-        )}
+            )}
+          </div>
+        </motion.div>
 
         {/* Custom Thank You Section - Show when form is submitted */}
         {hasDetectedSubmission && (
@@ -360,52 +387,6 @@ function LoyaltyTrialContent() {
         </motion.div>
       </div>
 
-      {/* Success Modal */}
-      <AnimatePresence>
-        {showModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-            onClick={handleCloseModal}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="bg-white rounded-xl shadow-2xl p-8 max-w-md mx-4 text-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Green Checkmark */}
-              <div className="mx-auto mb-6 inline-flex items-center justify-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Message */}
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">
-                You&apos;re in.
-              </h2>
-              <p className="text-slate-700 mb-6 leading-relaxed">
-                We&apos;ll text or email you soon to set up your Loyalty Club.
-              </p>
-
-              {/* Close Button */}
-              <button
-                onClick={handleCloseModal}
-                className="w-full px-6 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-colors duration-200"
-              >
-                Close
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
     </main>
   );
