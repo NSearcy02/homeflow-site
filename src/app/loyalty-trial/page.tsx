@@ -156,20 +156,6 @@ export default function LoyaltyTrialPage() {
             No spam. No pressure. Just more people coming back for more.
           </motion.p>
 
-          {/* Test Modal Button - Remove this after testing */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            className="pt-4"
-          >
-            <button
-              onClick={() => setHasDetectedSubmission(true)}
-              className="px-4 py-2 bg-green-500 text-white rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
-            >
-              🧪 Test Thank You Message
-            </button>
-          </motion.div>
         </motion.div>
 
         {/* Form Section - Hide when form is submitted */}
