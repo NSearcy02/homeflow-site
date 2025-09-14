@@ -41,6 +41,7 @@ export default function LoyaltyTrialPage() {
     if (hasDetectedSubmission) return;
 
     console.log('🔄 iframe loaded, checking for form submission...');
+    console.log('📍 Current iframe src:', iframeRef.current?.src);
 
     try {
       const iframe = iframeRef.current;
@@ -136,9 +137,36 @@ export default function LoyaltyTrialPage() {
       } catch {
         // Cross-origin access blocked - this is expected
       }
-    }, 2000); // Check every 2 seconds
+    }, 1000); // Check every 1 second for faster detection
 
     return () => clearInterval(checkInterval);
+  }, [hasDetectedSubmission]);
+
+  // Enhanced detection using iframe src changes
+  useEffect(() => {
+    if (hasDetectedSubmission) return;
+
+    const checkIframeSrc = () => {
+      const iframe = iframeRef.current;
+      if (iframe) {
+        const currentSrc = iframe.src;
+        console.log('🔄 Checking iframe src:', currentSrc);
+        
+        // Check if the iframe src has changed to a thank you page
+        if (currentSrc.includes('thank') || 
+            currentSrc.includes('success') || 
+            currentSrc.includes('submitted') ||
+            currentSrc.includes('confirmation')) {
+          console.log('✅ Form submission detected via iframe src change!');
+          setHasDetectedSubmission(true);
+        }
+      }
+    };
+
+    // Check iframe src every 2 seconds
+    const srcCheckInterval = setInterval(checkIframeSrc, 2000);
+
+    return () => clearInterval(srcCheckInterval);
   }, [hasDetectedSubmission]);
   return (
     <main className="min-h-screen bg-background">
@@ -195,20 +223,34 @@ export default function LoyaltyTrialPage() {
 
         </motion.div>
 
-        {/* Test Button - Remove this in production */}
+        {/* Test Buttons - Remove these in production */}
         {!hasDetectedSubmission && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            className="mb-6 text-center"
+            className="mb-6 text-center space-y-2"
           >
-            <button
-              onClick={() => setHasDetectedSubmission(true)}
-              className="px-4 py-2 bg-red-500 text-white rounded-lg text-sm font-medium hover:bg-red-600 transition-colors"
-            >
-              🧪 Test Thank You Modal
-            </button>
+            <div className="flex gap-2 justify-center">
+              <button
+                onClick={() => setHasDetectedSubmission(true)}
+                className="px-4 py-2 bg-red-500 text-white rounded-lg text-sm font-medium hover:bg-red-600 transition-colors"
+              >
+                🧪 Test Thank You Modal
+              </button>
+              <button
+                onClick={() => {
+                  console.log('🔍 Manual detection triggered');
+                  setHasDetectedSubmission(true);
+                }}
+                className="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors"
+              >
+                🔍 Force Override
+              </button>
+            </div>
+            <p className="text-xs text-gray-500">
+              Use these buttons to test the thank you modal override
+            </p>
           </motion.div>
         )}
 
