@@ -43,38 +43,49 @@ export default function LoyaltyTrialPage() {
   const handleIframeLoad = () => {
     if (hasDetectedSubmission) return;
 
+    console.log('🔄 iframe loaded, checking for form submission...');
+
     try {
       const iframe = iframeRef.current;
       if (iframe && iframe.contentDocument) {
         const iframeDoc = iframe.contentDocument;
         const bodyText = iframeDoc.body?.textContent?.toLowerCase() || '';
         
+        console.log('📄 iframe content:', bodyText.substring(0, 200) + '...');
+        
         // Check for thank you indicators in the iframe content
         if (bodyText.includes('thank you') || 
             bodyText.includes('success') || 
             bodyText.includes('submitted') ||
-            bodyText.includes('received')) {
+            bodyText.includes('received') ||
+            bodyText.includes("you're in")) {
+          console.log('✅ Form submission detected via iframe content!');
           setHasDetectedSubmission(true);
           setShowThankYouModal(true);
         }
       }
     } catch {
       // Cross-origin iframe access blocked - this is expected
-      console.log('Cross-origin iframe access blocked (expected)');
+      console.log('🚫 Cross-origin iframe access blocked (expected)');
     }
   };
 
   // Alternative method: Listen for postMessage from iframe
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
+      console.log('📨 Received message:', event.origin, event.data);
+      
       // Check if message is from our form domain
       if (event.origin.includes('leadconnectorhq.com') || 
           event.origin.includes('homeflowsystems.com')) {
         const data = event.data;
         
+        console.log('🎯 Message from form domain:', data);
+        
         // Check for form submission indicators
         if (typeof data === 'string' && 
             (data.includes('thank') || data.includes('success') || data.includes('submitted'))) {
+          console.log('✅ Form submission detected via postMessage!');
           if (!hasDetectedSubmission) {
             setHasDetectedSubmission(true);
             setShowThankYouModal(true);
@@ -83,6 +94,7 @@ export default function LoyaltyTrialPage() {
         
         // Check for object with form submission data
         if (typeof data === 'object' && data.type === 'form_submitted') {
+          console.log('✅ Form submission detected via postMessage object!');
           if (!hasDetectedSubmission) {
             setHasDetectedSubmission(true);
             setShowThankYouModal(true);
@@ -149,6 +161,21 @@ export default function LoyaltyTrialPage() {
           >
             No spam. No pressure. Just more people coming back for more.
           </motion.p>
+
+          {/* Test Modal Button - Remove this after testing */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+            className="pt-4"
+          >
+            <button
+              onClick={() => setShowThankYouModal(true)}
+              className="px-4 py-2 bg-green-500 text-white rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
+            >
+              🧪 Test Thank You Modal
+            </button>
+          </motion.div>
         </motion.div>
 
         {/* Form Section */}
