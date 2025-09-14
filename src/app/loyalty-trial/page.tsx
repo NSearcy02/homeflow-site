@@ -223,35 +223,20 @@ export default function LoyaltyTrialPage() {
 
         </motion.div>
 
-        {/* Test Buttons - Remove these in production */}
-        {!hasDetectedSubmission && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            className="mb-6 text-center space-y-2"
-          >
-            <div className="flex gap-2 justify-center">
-              <button
-                onClick={() => setHasDetectedSubmission(true)}
-                className="px-4 py-2 bg-red-500 text-white rounded-lg text-sm font-medium hover:bg-red-600 transition-colors"
-              >
-                🧪 Test Thank You Modal
-              </button>
-              <button
-                onClick={() => {
-                  console.log('🔍 Manual detection triggered');
-                  setHasDetectedSubmission(true);
-                }}
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors"
-              >
-                🔍 Force Override
-              </button>
-            </div>
-            <p className="text-xs text-gray-500">
-              Use these buttons to test the thank you modal override
-            </p>
-          </motion.div>
+        {/* Hidden Developer Test Button - Only visible in development */}
+        {process.env.NODE_ENV === 'development' && !hasDetectedSubmission && (
+          <div className="fixed bottom-4 right-4 z-50">
+            <button
+              onClick={() => {
+                console.log('🧪 Developer test: Triggering thank you modal');
+                setHasDetectedSubmission(true);
+              }}
+              className="px-3 py-2 bg-gray-800 text-white text-xs rounded-lg opacity-50 hover:opacity-100 transition-opacity"
+              title="Developer Test - Trigger Thank You Modal"
+            >
+              🧪 Test
+            </button>
+          </div>
         )}
 
         {/* Form Section - Hide when form is submitted */}
