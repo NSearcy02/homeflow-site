@@ -3,8 +3,100 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Script from "next/script";
+import { useState, useEffect, useRef } from "react";
+import ThankYouModal from "@/components/ThankYouModal";
 
 export default function LoyaltyTrialPage() {
+  const [showThankYouModal, setShowThankYouModal] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [hasDetectedSubmission, setHasDetectedSubmission] = useState(false);
+
+  // Check for thank-you page redirect
+  useEffect(() => {
+    const checkForThankYouPage = () => {
+      if (window.location.href.includes('/thank-you') || 
+          window.location.href.includes('thank') ||
+          window.location.href.includes('success')) {
+        if (!hasDetectedSubmission) {
+          setHasDetectedSubmission(true);
+          setShowThankYouModal(true);
+        }
+      }
+    };
+
+    // Check immediately
+    checkForThankYouPage();
+
+    // Listen for URL changes (for SPA navigation)
+    const handlePopState = () => {
+      setTimeout(checkForThankYouPage, 100);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [hasDetectedSubmission]);
+
+  // Handle iframe load event to detect form submission
+  const handleIframeLoad = () => {
+    if (hasDetectedSubmission) return;
+
+    try {
+      const iframe = iframeRef.current;
+      if (iframe && iframe.contentDocument) {
+        const iframeDoc = iframe.contentDocument;
+        const bodyText = iframeDoc.body?.textContent?.toLowerCase() || '';
+        
+        // Check for thank you indicators in the iframe content
+        if (bodyText.includes('thank you') || 
+            bodyText.includes('success') || 
+            bodyText.includes('submitted') ||
+            bodyText.includes('received')) {
+          setHasDetectedSubmission(true);
+          setShowThankYouModal(true);
+        }
+      }
+    } catch {
+      // Cross-origin iframe access blocked - this is expected
+      console.log('Cross-origin iframe access blocked (expected)');
+    }
+  };
+
+  // Alternative method: Listen for postMessage from iframe
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      // Check if message is from our form domain
+      if (event.origin.includes('leadconnectorhq.com') || 
+          event.origin.includes('homeflowsystems.com')) {
+        const data = event.data;
+        
+        // Check for form submission indicators
+        if (typeof data === 'string' && 
+            (data.includes('thank') || data.includes('success') || data.includes('submitted'))) {
+          if (!hasDetectedSubmission) {
+            setHasDetectedSubmission(true);
+            setShowThankYouModal(true);
+          }
+        }
+        
+        // Check for object with form submission data
+        if (typeof data === 'object' && data.type === 'form_submitted') {
+          if (!hasDetectedSubmission) {
+            setHasDetectedSubmission(true);
+            setShowThankYouModal(true);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
+  }, [hasDetectedSubmission]);
   return (
     <main className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
@@ -68,6 +160,7 @@ export default function LoyaltyTrialPage() {
         >
           <div className="mt-10">
             <iframe
+              ref={iframeRef}
               src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
               style={{width:"100%",height:"100%",border:"none",borderRadius:"3px"}}
               id="inline-VZeLp5jYY9CI2ZRNdxkx"
@@ -83,6 +176,7 @@ export default function LoyaltyTrialPage() {
               data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
               data-form-id="VZeLp5jYY9CI2ZRNdxkx"
               title="HomeFlow Loyalty Trial Form"
+              onLoad={handleIframeLoad}
             />
           </div>
         </motion.div>
@@ -121,6 +215,15 @@ export default function LoyaltyTrialPage() {
           </p>
         </motion.div>
       </div>
+
+      {/* Thank You Modal */}
+      <ThankYouModal
+        isOpen={showThankYouModal}
+        onClose={() => setShowThankYouModal(false)}
+        headline="You're All Set! 🎉"
+        subtext="Thanks for signing up for the HomeFlow Loyalty Trial. We'll be in touch within 24 hours to get your loyalty program up and running."
+        autoCloseDelay={4000}
+      />
     </main>
   );
 }
