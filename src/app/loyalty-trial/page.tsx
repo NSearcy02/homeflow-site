@@ -55,7 +55,10 @@ export default function LoyaltyTrialPage() {
             bodyText.includes('success') || 
             bodyText.includes('submitted') ||
             bodyText.includes('received') ||
-            bodyText.includes("you're in")) {
+            bodyText.includes("you're in") ||
+            bodyText.includes('thank you for') ||
+            bodyText.includes('form submitted') ||
+            bodyText.includes('application received')) {
           console.log('✅ Form submission detected via iframe content!');
           setHasDetectedSubmission(true);
         }
@@ -73,7 +76,8 @@ export default function LoyaltyTrialPage() {
       
       // Check if message is from our form domain
       if (event.origin.includes('leadconnectorhq.com') || 
-          event.origin.includes('homeflowsystems.com')) {
+          event.origin.includes('homeflowsystems.com') ||
+          event.origin.includes('gohighlevel.com')) {
         const data = event.data;
         
         console.log('🎯 Message from form domain:', data);
@@ -102,6 +106,39 @@ export default function LoyaltyTrialPage() {
     return () => {
       window.removeEventListener('message', handleMessage);
     };
+  }, [hasDetectedSubmission]);
+
+  // Periodic check for form submission (fallback method)
+  useEffect(() => {
+    if (hasDetectedSubmission) return;
+
+    const checkInterval = setInterval(() => {
+      try {
+        const iframe = iframeRef.current;
+        if (iframe && iframe.contentDocument) {
+          const iframeDoc = iframe.contentDocument;
+          const bodyText = iframeDoc.body?.textContent?.toLowerCase() || '';
+          
+          // Check for thank you indicators
+          if (bodyText.includes('thank you') || 
+              bodyText.includes('success') || 
+              bodyText.includes('submitted') ||
+              bodyText.includes('received') ||
+              bodyText.includes("you're in") ||
+              bodyText.includes('thank you for') ||
+              bodyText.includes('form submitted') ||
+              bodyText.includes('application received')) {
+            console.log('✅ Form submission detected via periodic check!');
+            setHasDetectedSubmission(true);
+            clearInterval(checkInterval);
+          }
+        }
+      } catch {
+        // Cross-origin access blocked - this is expected
+      }
+    }, 2000); // Check every 2 seconds
+
+    return () => clearInterval(checkInterval);
   }, [hasDetectedSubmission]);
   return (
     <main className="min-h-screen bg-background">
@@ -157,6 +194,23 @@ export default function LoyaltyTrialPage() {
           </motion.p>
 
         </motion.div>
+
+        {/* Test Button - Remove this in production */}
+        {!hasDetectedSubmission && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+            className="mb-6 text-center"
+          >
+            <button
+              onClick={() => setHasDetectedSubmission(true)}
+              className="px-4 py-2 bg-red-500 text-white rounded-lg text-sm font-medium hover:bg-red-600 transition-colors"
+            >
+              🧪 Test Thank You Modal
+            </button>
+          </motion.div>
+        )}
 
         {/* Form Section - Hide when form is submitted */}
         {!hasDetectedSubmission && (
