@@ -26,19 +26,18 @@ export default function Navbar() {
         <Link href="/" className="hover:text-slate-900 transition-colors font-medium">
           Home
         </Link>
-        <Link href="/proof" className="hover:text-slate-900 transition-colors font-medium">
-          Proof
+        <Link href="/encore" className="hover:text-slate-900 transition-colors font-medium">
+          Encore
         </Link>
-        <Link href="/systems" className="hover:text-slate-900 transition-colors font-medium">
-          Systems
-        </Link>
-        <Link href="/how-it-works" className="hover:text-slate-900 transition-colors font-medium">
-          How It Works
+        <Link href="/contact" className="hover:text-slate-900 transition-colors font-medium">
+          Contact
         </Link>
       </nav>
       
       {/* Desktop CTA Button */}
-      <Button className="hidden md:block ml-6">Book a Demo</Button>
+      <Button className="hidden md:block ml-6" asChild>
+        <Link href="/contact">Get Started</Link>
+      </Button>
       
       {/* Mobile Menu Button */}
       <button
@@ -67,28 +66,23 @@ export default function Navbar() {
               Home
             </Link>
             <Link 
-              href="/proof" 
+              href="/encore" 
               className="text-slate-700 hover:text-slate-900 transition-colors font-medium py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Proof
+              Encore
             </Link>
             <Link 
-              href="/systems" 
+              href="/contact" 
               className="text-slate-700 hover:text-slate-900 transition-colors font-medium py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Systems
-            </Link>
-            <Link 
-              href="/how-it-works" 
-              className="text-slate-700 hover:text-slate-900 transition-colors font-medium py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              How It Works
+              Contact
             </Link>
             <div className="pt-3 border-t border-slate-200/30">
-              <Button className="w-full">Book a Demo</Button>
+              <Button className="w-full" asChild>
+                <Link href="/contact">Get Started</Link>
+              </Button>
             </div>
           </nav>
         </div>
