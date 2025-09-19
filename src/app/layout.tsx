@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HomeFlow Systems - Coffee Shop Automation",
-  description: "We help coffee shops, cafes, and juice bars modernize with websites, loyalty programs, and customer automations.",
+  title: "HomeFlow Systems - Encore Customer Retention",
+  description: "Encore: The automated customer retention system that brings customers back again and again. Set it up once. Watch your revenue grow.",
   icons: {
     icon: [
       { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
@@ -43,7 +43,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex flex-col min-h-screen bg-background">
+        <div className="flex flex-col min-h-screen bg-sky-50">
           <Navbar />
           <main className="flex-1">
             <AnimatedLayout>

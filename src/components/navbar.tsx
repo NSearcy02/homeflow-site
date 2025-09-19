@@ -8,7 +8,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-4 shadow-lg bg-background border-b border-slate-200/30">
+    <header className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-4 shadow-lg bg-white/95 backdrop-blur-sm border-b border-slate-200/30">
       <Link href="/" className="flex items-center space-x-2">
         <Image
           src="/logo-homeflow.png"
@@ -38,7 +38,7 @@ export default function Navbar() {
       <Button className="hidden md:block ml-6" asChild>
         <Link href="/contact">Get Started</Link>
       </Button>
-      
+
       {/* Mobile Menu Button */}
       <button
         className="md:hidden p-2 rounded-md text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors"
@@ -53,27 +53,27 @@ export default function Navbar() {
           )}
         </svg>
       </button>
-      
+
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-background border-b border-slate-200/30 shadow-lg md:hidden z-50">
+        <div className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-slate-200/30 shadow-lg md:hidden z-50">
           <nav className="flex flex-col px-4 py-4 space-y-3">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="text-slate-700 hover:text-slate-900 transition-colors font-medium py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
-            <Link 
-              href="/encore" 
+            <Link
+              href="/encore"
               className="text-slate-700 hover:text-slate-900 transition-colors font-medium py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Encore
             </Link>
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="text-slate-700 hover:text-slate-900 transition-colors font-medium py-2"
               onClick={() => setIsMenuOpen(false)}
             >
