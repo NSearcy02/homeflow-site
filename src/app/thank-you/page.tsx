@@ -29,7 +29,7 @@ export default function ThankYouPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-slate-900"
             >
-              You&apos;re In. We&apos;ll Set Up Encore.
+              You&apos;re In. Encore Starts Working.
             </motion.h1>
 
             {/* Subheadline */}
@@ -39,7 +39,7 @@ export default function ThankYouPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mx-auto"
             >
-              We&apos;ll contact you within 24 hours. Your customers start returning. Your revenue stays protected.
+              We contact you within 24 hours. We set up Encore. Your customers start returning. Your revenue grows.
             </motion.p>
 
             {/* What Happens Next */}
@@ -49,15 +49,15 @@ export default function ThankYouPage() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 max-w-2xl mx-auto"
             >
-              <h2 className="text-xl font-bold text-slate-900 mb-6">What Happens Next</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-6">Three Steps. Set It Up. Watch It Work.</h2>
               <div className="space-y-4 text-left">
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-sm font-semibold text-slate-600">1</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">We Contact You</h3>
-                    <p className="text-slate-600 text-sm">Within 24 hours. We set up your free 60-day trial.</p>
+                    <h3 className="font-semibold text-slate-900">We Call You</h3>
+                    <p className="text-slate-600 text-sm">Within 24 hours. We set up your free trial. You do nothing.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -66,7 +66,7 @@ export default function ThankYouPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900">Encore Goes Live</h3>
-                    <p className="text-slate-600 text-sm">One QR code. Your customers start checking in.</p>
+                    <p className="text-slate-600 text-sm">One QR code. Your customers check in. We track everything.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -74,8 +74,8 @@ export default function ThankYouPage() {
                     <span className="text-sm font-semibold text-slate-600">3</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Customers Return</h3>
-                    <p className="text-slate-600 text-sm">Encore tracks visits. Sends reminders. Brings them back.</p>
+                    <h3 className="font-semibold text-slate-900">Revenue Grows</h3>
+                    <p className="text-slate-600 text-sm">Customers return. They stay longer. You make more money.</p>
                   </div>
                 </div>
               </div>
@@ -92,7 +92,7 @@ export default function ThankYouPage() {
                 href="/encore"
                 className="inline-flex items-center justify-center rounded-lg bg-slate-900 text-white px-6 py-3 text-sm font-medium hover:bg-slate-800 transition-all duration-200"
               >
-                Learn More About Encore
+                See How Encore Works
               </Link>
               <Link
                 href="/"
@@ -110,7 +110,7 @@ export default function ThankYouPage() {
               className="pt-8"
             >
               <p className="text-sm text-slate-500">
-                Questions? Email us at <a href="mailto:hello@homeflowsystems.com" className="text-slate-700 hover:text-slate-900 underline">hello@homeflowsystems.com</a>
+                Questions? Email us at <a href="mailto:hello@homeflowsystems.com" className="text-slate-700 hover:text-slate-900 underline">hello@homeflowsystems.com</a>. We answer fast.
               </p>
             </motion.div>
           </div>
