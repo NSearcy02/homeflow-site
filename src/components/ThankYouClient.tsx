@@ -42,7 +42,7 @@ export default function ThankYouClient() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mx-auto"
             >
-              Thanks for submitting your details. We&apos;ll tailor the system for you and confirm next steps shortly.
+              Thanks for submitting your details. We&apos;ll reach out shortly to schedule a call.
             </motion.p>
 
             {/* CTA Button */}
