@@ -517,7 +517,7 @@ export default function EncorePage() {
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-slate-900 mb-2">Zero Setup Hassle</h3>
-                        <p className="text-slate-600">Works with any business. Have a POS? Great. Don't have one? Even better. Just results.</p>
+                        <p className="text-slate-600">Works with any business. Have a POS? Great. Don&apos;t have one? Even better. Just results.</p>
                       </div>
                     </div>
 
