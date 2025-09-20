@@ -2,10 +2,23 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import ConfettiBurst from "@/components/ConfettiBurst";
+
+export const metadata = {
+  title: "Thank You | HomeFlow Systems",
+  description: "Your Encore trial is in motion. We'll confirm your settings and share your real-time dashboard.",
+  openGraph: {
+    title: "Thank You | HomeFlow Systems",
+    description: "Your Encore trial is in motion. We'll confirm your settings and share your real-time dashboard.",
+    type: "website",
+  },
+};
 
 export default function ThankYouPage() {
   return (
     <main className="min-h-screen relative overflow-hidden bg-sky-50">
+      <ConfettiBurst />
+      
       {/* Hero Section */}
       <section className="relative py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
@@ -29,7 +42,7 @@ export default function ThankYouPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-slate-900"
             >
-              You&apos;re In. Encore Starts Working.
+              Welcome to Encore. More repeat customers start here.
             </motion.h1>
 
             {/* Subheadline */}
@@ -39,79 +52,93 @@ export default function ThankYouPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mx-auto"
             >
-              We contact you within 24 hours. We set up Encore. Your customers start returning. Your revenue grows.
+              Thanks for submitting your details. We&apos;ll tailor the system for you and confirm next steps shortly.
             </motion.p>
-
-            {/* What Happens Next */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 max-w-2xl mx-auto"
-            >
-              <h2 className="text-xl font-bold text-slate-900 mb-6">Three Steps. Set It Up. Watch It Work.</h2>
-              <div className="space-y-4 text-left">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-sm font-semibold text-slate-600">1</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900">We Call You</h3>
-                    <p className="text-slate-600 text-sm">Within 24 hours. We set up your free trial. You do nothing.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-sm font-semibold text-slate-600">2</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900">Encore Goes Live</h3>
-                    <p className="text-slate-600 text-sm">One QR code. Your customers check in. We track everything.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-sm font-semibold text-slate-600">3</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900">Revenue Grows</h3>
-                    <p className="text-slate-600 text-sm">Customers return. They stay longer. You make more money.</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center pt-6"
             >
               <Link
-                href="/encore"
-                className="inline-flex items-center justify-center rounded-lg bg-slate-900 text-white px-6 py-3 text-sm font-medium hover:bg-slate-800 transition-all duration-200"
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-lg bg-slate-900 text-white px-6 py-3 text-sm font-medium hover:bg-slate-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
               >
-                See How Encore Works
+                Book a quick call
               </Link>
               <Link
                 href="/"
-                className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 hover:border-slate-400 hover:bg-slate-50 transition-all duration-200"
+                className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 hover:border-slate-400 hover:bg-slate-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
               >
                 Back to Home
               </Link>
             </motion.div>
 
-            {/* Trust Message */}
+            {/* What Happens Next */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 max-w-2xl mx-auto mt-12"
+            >
+              <h2 className="text-xl font-bold text-slate-900 mb-6 text-center">What happens next</h2>
+              <div className="space-y-4 text-left">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-slate-700">We confirm your settings and reminder schedule.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-slate-700">We activate your check-in and tracking.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-slate-700">You get a dashboard you can check any time.</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Micro Proof Bar */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
               className="pt-8"
             >
-              <p className="text-sm text-slate-500">
-                Questions? Email us at <a href="mailto:hello@homeflowsystems.com" className="text-slate-700 hover:text-slate-900 underline">hello@homeflowsystems.com</a>. We answer fast.
-              </p>
+              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-500">
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>Works with or without a POS</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>Fast setup</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>Real-time metrics</span>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
