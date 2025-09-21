@@ -1,7 +1,227 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+
+// Customer Journey Storyboard Component
+function CustomerJourneyStoryboard() {
+  const [currentPanel, setCurrentPanel] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  const panels = [
+    {
+      id: 1,
+      title: "Customer Forgets to Return",
+      description: "A loyal customer visits your business but then forgets to come back. Days turn into weeks, and they slip away silently.",
+      icon: "😔",
+      color: "from-red-50 to-red-100",
+      borderColor: "border-red-200",
+      textColor: "text-red-800",
+      bgColor: "bg-red-50"
+    },
+    {
+      id: 2,
+      title: "Encore Sends a Reminder",
+      description: "Encore detects the absence and automatically sends a friendly, personalized reminder to bring them back.",
+      icon: "📱",
+      color: "from-blue-50 to-blue-100",
+      borderColor: "border-blue-200",
+      textColor: "text-blue-800",
+      bgColor: "bg-blue-50"
+    },
+    {
+      id: 3,
+      title: "Customer Returns Happily",
+      description: "The customer receives the reminder, remembers your business, and returns to make another purchase.",
+      icon: "😊",
+      color: "from-green-50 to-green-100",
+      borderColor: "border-green-200",
+      textColor: "text-green-800",
+      bgColor: "bg-green-50"
+    },
+    {
+      id: 4,
+      title: "Revenue Grows Steadily",
+      description: "With Encore working continuously, your customer retention improves and revenue grows month after month.",
+      icon: "📈",
+      color: "from-emerald-50 to-emerald-100",
+      borderColor: "border-emerald-200",
+      textColor: "text-emerald-800",
+      bgColor: "bg-emerald-50"
+    }
+  ];
+
+  const nextPanel = () => {
+    setCurrentPanel((prev) => (prev + 1) % panels.length);
+  };
+
+  const prevPanel = () => {
+    setCurrentPanel((prev) => (prev - 1 + panels.length) % panels.length);
+  };
+
+  return (
+    <section className="py-16 sm:py-20 bg-white relative overflow-hidden">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Customer Journey Storyboard</h2>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            See how Encore transforms the customer experience from forgotten to flourishing.
+          </p>
+        </motion.div>
+
+        {/* Desktop Storyboard */}
+        <div className="hidden md:block" ref={containerRef}>
+          <div className="relative">
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevPanel}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all duration-200"
+              aria-label="Previous panel"
+            >
+              <svg className="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={nextPanel}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-all duration-200"
+              aria-label="Next panel"
+            >
+              <svg className="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Panel Container */}
+            <div className="overflow-hidden">
+              <motion.div
+                className="flex"
+                animate={{ x: `-${currentPanel * 100}%` }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              >
+                {panels.map((panel, index) => (
+                  <div key={panel.id} className="w-full flex-shrink-0 px-8">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                      className={`relative bg-gradient-to-br ${panel.color} rounded-3xl p-8 border-2 ${panel.borderColor} shadow-xl`}
+                    >
+                      {/* Panel Number */}
+                      <div className="absolute -top-4 -left-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-slate-200 flex items-center justify-center">
+                        <span className="text-lg font-bold text-slate-700">{panel.id}</span>
+                      </div>
+
+                      {/* Icon */}
+                      <motion.div
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={isInView ? { scale: 1, rotate: 0 } : {}}
+                        transition={{ duration: 0.8, delay: 0.6 + index * 0.1, type: "spring" }}
+                        className="text-6xl mb-6 text-center"
+                      >
+                        {panel.icon}
+                      </motion.div>
+
+                      {/* Content */}
+                      <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                        className={`text-2xl font-bold ${panel.textColor} mb-4 text-center`}
+                      >
+                        {panel.title}
+                      </motion.h3>
+
+                      <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.6, delay: 1.0 + index * 0.1 }}
+                        className={`text-lg ${panel.textColor} text-center leading-relaxed`}
+                      >
+                        {panel.description}
+                      </motion.p>
+
+                      {/* Special Effect for Final Panel */}
+                      {panel.id === 4 && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                          transition={{ duration: 1, delay: 1.5 }}
+                          className="absolute inset-0 pointer-events-none"
+                        >
+                          <motion.div
+                            animate={{
+                              scale: [1, 1.2, 1],
+                              opacity: [0.3, 0.6, 0.3]
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              repeatType: "reverse"
+                            }}
+                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-yellow-300 rounded-full blur-xl"
+                          />
+                        </motion.div>
+                      )}
+                    </motion.div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Panel Indicators */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {panels.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentPanel(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                    index === currentPanel ? 'bg-slate-900' : 'bg-slate-300'
+                  }`}
+                  aria-label={`Go to panel ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Storyboard */}
+        <div className="md:hidden" ref={containerRef}>
+          <div className="space-y-6">
+            {panels.map((panel, index) => (
+              <motion.div
+                key={panel.id}
+                initial={{ opacity: 0, x: -30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                className={`bg-gradient-to-br ${panel.color} rounded-2xl p-6 border-2 ${panel.borderColor} shadow-lg`}
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="text-4xl">{panel.icon}</div>
+                  <div className="flex-1">
+                    <h3 className={`text-xl font-bold ${panel.textColor} mb-2`}>
+                      {panel.title}
+                    </h3>
+                    <p className={`${panel.textColor} leading-relaxed`}>
+                      {panel.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function EncorePage() {
   return (
@@ -156,7 +376,8 @@ export default function EncorePage() {
               <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-center mb-16"
                 >
@@ -169,7 +390,8 @@ export default function EncorePage() {
                   {/* Step 1: Set Up Once */}
                   <motion.div
                     initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
                     transition={{
                       duration: 0.7,
                       delay: 0.4,
@@ -178,10 +400,11 @@ export default function EncorePage() {
                       damping: 15
                     }}
                     whileHover={{
-                      y: -5,
-                      transition: { duration: 0.2 }
+                      y: -8,
+                      scale: 1.02,
+                      transition: { duration: 0.3, type: "spring", stiffness: 300 }
                     }}
-                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40"
+                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-shadow duration-300"
                   >
                     <div className="relative mb-8">
                       <motion.div
@@ -250,7 +473,8 @@ export default function EncorePage() {
                   {/* Step 2: Runs Automatically */}
                   <motion.div
                     initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
                     transition={{
                       duration: 0.7,
                       delay: 0.6,
@@ -259,10 +483,11 @@ export default function EncorePage() {
                       damping: 15
                     }}
                     whileHover={{
-                      y: -5,
-                      transition: { duration: 0.2 }
+                      y: -8,
+                      scale: 1.02,
+                      transition: { duration: 0.3, type: "spring", stiffness: 300 }
                     }}
-                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40"
+                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-shadow duration-300"
                   >
                     <div className="relative mb-8">
                       <motion.div
@@ -330,7 +555,8 @@ export default function EncorePage() {
                   {/* Step 3: See It All in Real Time */}
                   <motion.div
                     initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
                     transition={{
                       duration: 0.7,
                       delay: 0.8,
@@ -339,10 +565,11 @@ export default function EncorePage() {
                       damping: 15
                     }}
                     whileHover={{
-                      y: -5,
-                      transition: { duration: 0.2 }
+                      y: -8,
+                      scale: 1.02,
+                      transition: { duration: 0.3, type: "spring", stiffness: 300 }
                     }}
-                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40"
+                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-shadow duration-300"
                   >
                     <div className="relative mb-8">
                       <motion.div
@@ -410,13 +637,17 @@ export default function EncorePage() {
         </div>
       </section>
 
+      {/* Customer Journey Storyboard */}
+      <CustomerJourneyStoryboard />
+
             {/* Benefits Section */}
             <section className="py-16 sm:py-20 relative overflow-hidden">
               <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-center mb-16"
                 >
                   <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Encore Advantage</h2>
@@ -429,9 +660,11 @@ export default function EncorePage() {
                 <div className="grid md:grid-cols-3 gap-8 mb-16">
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 1.2 }}
-                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40"
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
                   >
                     <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">100%</div>
                     <div className="text-slate-600 text-sm">We handle everything</div>
@@ -439,9 +672,11 @@ export default function EncorePage() {
 
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 1.4 }}
-                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40"
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
                   >
                     <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">24hrs</div>
                     <div className="text-slate-600 text-sm">From signup to working</div>
@@ -449,9 +684,11 @@ export default function EncorePage() {
 
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 1.6 }}
-                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40"
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
                   >
                     <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">$0</div>
                     <div className="text-slate-600 text-sm">Extra equipment required</div>
@@ -462,8 +699,9 @@ export default function EncorePage() {
                 <div className="grid md:grid-cols-2 gap-8">
                   <motion.div
                     initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 1.8 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 1.0 }}
                     className="space-y-6"
                   >
                     <div className="flex items-start space-x-4">
@@ -505,8 +743,9 @@ export default function EncorePage() {
 
                   <motion.div
                     initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 2.0 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 1.2 }}
                     className="space-y-6"
                   >
                     <div className="flex items-start space-x-4">
@@ -554,8 +793,9 @@ export default function EncorePage() {
               <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 2.0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                   className="space-y-6"
                 >
                   <h2 className="text-3xl font-bold text-slate-900">Ready to Never Lose a Customer Again?</h2>
@@ -563,18 +803,28 @@ export default function EncorePage() {
                     Start your free 60-day trial. See customers return. Keep the ones you love.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center justify-center rounded-lg bg-slate-900 text-white px-8 py-4 text-lg font-medium hover:bg-slate-800 transition-all duration-200"
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      Start Your Free 60-Day Trial
-                    </Link>
-                    <Link
-                      href="/"
-                      className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-8 py-4 text-lg font-medium text-slate-700 hover:border-slate-400 hover:bg-slate-50 transition-all duration-200"
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center justify-center rounded-lg bg-slate-900 text-white px-8 py-4 text-lg font-medium hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl"
+                      >
+                        Start Your Free 60-Day Trial
+                      </Link>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      Learn More
-                    </Link>
+                      <Link
+                        href="/"
+                        className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-8 py-4 text-lg font-medium text-slate-700 hover:border-slate-400 hover:bg-slate-50 transition-all duration-200 shadow-lg hover:shadow-xl"
+                      >
+                        Learn More
+                      </Link>
+                    </motion.div>
                   </div>
                 </motion.div>
               </div>
