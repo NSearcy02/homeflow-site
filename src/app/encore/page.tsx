@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import CustomerJourneyStoryboard from "@/components/CustomerJourneyStoryboard";
 
 

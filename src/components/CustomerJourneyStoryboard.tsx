@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useTransform, useAnimation } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 interface StoryboardPanel {
@@ -20,10 +20,8 @@ interface CustomerJourneyStoryboardProps {
 
 export default function CustomerJourneyStoryboard({ className = "" }: CustomerJourneyStoryboardProps) {
   const [currentPanel, setCurrentPanel] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const controls = useAnimation();
 
   const panels: StoryboardPanel[] = [
     {
@@ -90,11 +88,12 @@ export default function CustomerJourneyStoryboard({ className = "" }: CustomerJo
       }
     };
 
-    if (containerRef.current) {
-      containerRef.current.addEventListener('keydown', handleKeyDown);
-      return () => containerRef.current?.removeEventListener('keydown', handleKeyDown);
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('keydown', handleKeyDown);
+      return () => container.removeEventListener('keydown', handleKeyDown);
     }
-  }, []);
+  }, [prevPanel, nextPanel]);
 
   // Mouse wheel horizontal scroll
   useEffect(() => {
@@ -111,7 +110,7 @@ export default function CustomerJourneyStoryboard({ className = "" }: CustomerJo
 
     document.addEventListener('wheel', handleWheel, { passive: false });
     return () => document.removeEventListener('wheel', handleWheel);
-  }, []);
+  }, [nextPanel, prevPanel]);
 
   // Touch/swipe support
   const [touchStart, setTouchStart] = useState<number | null>(null);

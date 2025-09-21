@@ -137,8 +137,8 @@ export default function MultiStepForm() {
               className="space-y-6"
             >
               <div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">Let's start with your name</h3>
-                <p className="text-slate-600">We'll use this to personalize your Encore experience.</p>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">Let&apos;s start with your name</h3>
+                <p className="text-slate-600">We&apos;ll use this to personalize your Encore experience.</p>
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -186,7 +186,7 @@ export default function MultiStepForm() {
             >
               <div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-2">How can we reach you?</h3>
-                <p className="text-slate-600">We'll use this to set up your Encore system and send updates.</p>
+                <p className="text-slate-600">We&apos;ll use this to set up your Encore system and send updates.</p>
               </div>
               
               <div className="space-y-4">
@@ -386,7 +386,7 @@ export default function MultiStepForm() {
         {/* Privacy Notice */}
         <div className="mt-6 text-center">
           <p className="text-sm text-slate-500">
-            Your info is safe. No spam. We'll only contact you about your Encore setup.
+            Your info is safe. No spam. We&apos;ll only contact you about your Encore setup.
           </p>
         </div>
       </div>
