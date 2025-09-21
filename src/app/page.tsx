@@ -8,8 +8,8 @@ import CustomerJourneyStoryboard from "@/components/CustomerJourneyStoryboard";
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
   const benefitsRef = useRef<HTMLElement>(null);
-  const isHeroInView = useInView(heroRef, { once: true, margin: "-100px" });
-  const isBenefitsInView = useInView(benefitsRef, { once: true, margin: "-100px" });
+  const isHeroInView = useInView(heroRef, { once: true, margin: "-50px" });
+  const isBenefitsInView = useInView(benefitsRef, { once: true, margin: "-50px" });
 
   return (
     <main className="min-h-screen relative overflow-hidden bg-sky-50 pt-20">
@@ -67,7 +67,7 @@ export default function Home() {
             
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-slate-900"
             >
@@ -75,7 +75,7 @@ export default function Home() {
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mx-auto"
             >
