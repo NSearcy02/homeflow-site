@@ -1,18 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Script from "next/script";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import MultiStepForm from "@/components/MultiStepForm";
 
 export default function ContactPage() {
+  const heroRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLElement>(null);
+  const isHeroInView = useInView(heroRef, { once: true, margin: "-100px" });
+  const isFormInView = useInView(formRef, { once: true, margin: "-100px" });
+
   return (
-    <main className="min-h-screen relative overflow-hidden bg-sky-50">
+    <main className="min-h-screen relative overflow-hidden bg-sky-50 pt-20">
       {/* Hero Section */}
-      <section className="relative pt-20 pb-8">
+      <section ref={heroRef} className="relative py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <div className="text-center space-y-6">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
               className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-slate-900"
             >
@@ -20,7 +26,7 @@ export default function ContactPage() {
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mx-auto"
             >
@@ -31,73 +37,61 @@ export default function ContactPage() {
       </section>
 
       {/* Form Section */}
-      <section className="relative pt-4 pb-16 sm:pb-20">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6">
+      <section ref={formRef} className="relative py-16 sm:py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-8"
+            animate={isFormInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {/* GHL Form Embed */}
-            <div>
-              <iframe
-                src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
-                style={{width:"100%",height:"100%",border:"none",borderRadius:"8px"}}
-                id="inline-VZeLp5jYY9CI2ZRNdxkx"
-                data-layout="{'id':'INLINE'}"
-                data-trigger-type="alwaysShow"
-                data-trigger-value=""
-                data-activation-type="alwaysActivated"
-                data-activation-value=""
-                data-deactivation-type="neverDeactivate"
-                data-deactivation-value=""
-                data-form-name="HomeFlow Encore Contact Form"
-                data-height="600"
-                data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
-                data-form-id="VZeLp5jYY9CI2ZRNdxkx"
-                title="HomeFlow Encore Contact Form"
-                className="w-full h-[600px] rounded-lg"
-              />
-            </div>
+            <MultiStepForm />
+          </motion.div>
 
-            {/* Trust Indicators */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-8 pt-8 border-t border-slate-200"
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-                <div>
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Free 60-Day Trial</h3>
-                  <p className="text-sm text-slate-600">No risk. No commitment.</p>
+          {/* Trust Indicators */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isFormInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-12 pt-8 border-t border-slate-200"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+              <motion.div
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
-                <div>
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h3 className="font-semibold text-slate-900 mb-1">24-Hour Response</h3>
-                  <p className="text-sm text-slate-600">Quick setup. Guaranteed.</p>
+                <h3 className="font-semibold text-slate-900 mb-1">Managed Setup</h3>
+                <p className="text-sm text-slate-600">We handle everything.</p>
+              </motion.div>
+              <motion.div
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
-                <div>
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Fully Managed</h3>
-                  <p className="text-sm text-slate-600">We handle everything.</p>
+                <h3 className="font-semibold text-slate-900 mb-1">24-Hour Response</h3>
+                <p className="text-sm text-slate-600">Quick setup. Guaranteed.</p>
+              </motion.div>
+              <motion.div
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
-              </div>
-            </motion.div>
+                <h3 className="font-semibold text-slate-900 mb-1">No POS Required</h3>
+                <p className="text-sm text-slate-600">Works with any business.</p>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -169,11 +163,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* GHL Form Script */}
-      <Script
-        src="https://link.msgsndr.com/js/form_embed.js"
-        strategy="afterInteractive"
-      />
     </main>
   );
 }
