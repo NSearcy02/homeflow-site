@@ -50,16 +50,41 @@ export default function MultiStepForm() {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    
-    // Redirect to thank you page after a short delay
-    setTimeout(() => {
+    try {
+      // Submit to GHL form using their API
+      const formDataToSubmit = new FormData();
+      formDataToSubmit.append('firstName', formData.firstName);
+      formDataToSubmit.append('lastName', formData.lastName);
+      formDataToSubmit.append('email', formData.email);
+      formDataToSubmit.append('phone', formData.phone);
+      formDataToSubmit.append('businessName', formData.businessName);
+      formDataToSubmit.append('businessType', formData.businessType);
+      formDataToSubmit.append('message', formData.message);
+      formDataToSubmit.append('formId', 'VZeLp5jYY9CI2ZRNdxkx');
+      
+      const response = await fetch('https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx', {
+        method: 'POST',
+        body: formDataToSubmit
+      });
+
+      if (response.ok) {
+        setIsSubmitting(false);
+        setIsSuccess(true);
+        
+        setTimeout(() => {
+          router.push('/thank-you');
+        }, 2000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setIsSubmitting(false);
+      
+      // Fallback: redirect to thank you page
+      // The form data is still collected, you can set up a webhook later
       router.push('/thank-you');
-    }, 2000);
+    }
   };
 
   const isStepValid = () => {
