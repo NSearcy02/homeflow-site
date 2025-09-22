@@ -12,9 +12,9 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen relative overflow-hidden bg-sky-50 pt-20">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-          <div className="text-center space-y-6">
+      <section ref={heroRef} className="relative py-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-2">
+          <div className="text-center space-y-4">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
