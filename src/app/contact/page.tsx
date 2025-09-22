@@ -36,7 +36,7 @@ export default function ContactPage() {
       </section>
 
       {/* Form Section */}
-      <section ref={formRef} className="relative bg-white py-8">
+      <section ref={formRef} className="relative bg-white py-4">
         <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
           {/* GHL Form Embed */}
           <div className="w-full max-w-2xl mx-auto">
@@ -63,7 +63,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-8 sm:py-12 bg-sky-100">
+      <section className="relative py-4 bg-sky-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
