@@ -5,9 +5,7 @@ import { useRef } from "react";
 
 export default function ContactPage() {
   const heroRef = useRef<HTMLElement>(null);
-  const formRef = useRef<HTMLElement>(null);
   const isHeroInView = useInView(heroRef, { once: true, margin: "-100px" });
-  const isFormInView = useInView(formRef, { once: true, margin: "-100px" });
 
   return (
     <main className="min-h-screen relative overflow-hidden bg-sky-50 pt-20">

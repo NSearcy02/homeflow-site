@@ -540,7 +540,7 @@ export default function EncorePage() {
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold text-slate-900 mb-4">Revenue Protection</h3>
-                    <p className="text-slate-600 leading-relaxed">Stop losing customers to silence. Encore brings them back before they're gone forever.</p>
+                    <p className="text-slate-600 leading-relaxed">Stop losing customers to silence. Encore brings them back before they&apos;re gone forever.</p>
                   </motion.div>
 
                   <motion.div
