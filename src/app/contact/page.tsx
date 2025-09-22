@@ -69,10 +69,10 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-center mb-6"
+            className="text-center mb-4"
           >
-            <h2 className="text-3xl font-bold text-slate-900 mb-2">Frequently Asked Questions</h2>
-            <p className="text-lg text-slate-600">
+            <h2 className="text-xl font-bold text-slate-900 mb-1">Frequently Asked Questions</h2>
+            <p className="text-sm text-slate-600">
               Everything you need to know about Encore.
             </p>
           </motion.div>
@@ -82,10 +82,10 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-                     className="bg-white rounded-lg p-6 shadow-sm"
+                     className="bg-white rounded-lg p-3 shadow-sm"
             >
-              <h3 className="font-semibold text-slate-900 mb-2">How long does setup take?</h3>
-              <p className="text-slate-600 text-sm">
+              <h3 className="font-semibold text-slate-900 mb-1 text-sm">How long does setup take?</h3>
+              <p className="text-slate-600 text-xs">
                 30 minutes. That&apos;s it. We do everything. You start seeing results.
               </p>
             </motion.div>
@@ -94,10 +94,10 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-                     className="bg-white rounded-lg p-6 shadow-sm"
+                     className="bg-white rounded-lg p-3 shadow-sm"
             >
-              <h3 className="font-semibold text-slate-900 mb-2">What if I don&apos;t have a POS system?</h3>
-              <p className="text-slate-600 text-sm">
+              <h3 className="font-semibold text-slate-900 mb-1 text-sm">What if I don&apos;t have a POS system?</h3>
+              <p className="text-slate-600 text-xs">
                 Perfect. Encore works with one QR code. No expensive equipment. No complex systems.
               </p>
             </motion.div>
@@ -106,10 +106,10 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.4 }}
-                     className="bg-white rounded-lg p-6 shadow-sm"
+                     className="bg-white rounded-lg p-3 shadow-sm"
             >
-              <h3 className="font-semibold text-slate-900 mb-2">Can I customize the reminder messages?</h3>
-              <p className="text-slate-600 text-sm">
+              <h3 className="font-semibold text-slate-900 mb-1 text-sm">Can I customize the reminder messages?</h3>
+              <p className="text-slate-600 text-xs">
                 Yes. We create messages that sound like you. Your voice. Your brand. Your customers.
               </p>
             </motion.div>
@@ -118,10 +118,10 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.6 }}
-                     className="bg-white rounded-lg p-6 shadow-sm"
+                     className="bg-white rounded-lg p-3 shadow-sm"
             >
-              <h3 className="font-semibold text-slate-900 mb-2">What happens after the trial?</h3>
-              <p className="text-slate-600 text-sm">
+              <h3 className="font-semibold text-slate-900 mb-1 text-sm">What happens after the trial?</h3>
+              <p className="text-slate-600 text-xs">
                 You keep Encore. You keep your customers. We keep it simple. One monthly fee. That&apos;s it.
               </p>
             </motion.div>
