@@ -36,8 +36,8 @@ export default function ContactPage() {
       </section>
 
       {/* Form Section */}
-      <section ref={formRef} className="relative py-16 sm:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <section ref={formRef} className="relative min-h-screen bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
           {/* GHL Form Embed */}
           <div className="w-full max-w-2xl mx-auto">
             <iframe
@@ -52,11 +52,11 @@ export default function ContactPage() {
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
               data-form-name="HomeFlow Encore Contact Form"
-              data-height="1200"
+              data-height="100vh"
               data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
               data-form-id="VZeLp5jYY9CI2ZRNdxkx"
               title="HomeFlow Encore Contact Form"
-              className="w-full h-[1200px] rounded-lg shadow-lg"
+              className="w-full h-[calc(100vh-200px)] rounded-lg shadow-lg"
               scrolling="no"
             />
           </div>
