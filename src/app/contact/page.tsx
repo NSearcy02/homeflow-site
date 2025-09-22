@@ -2,7 +2,6 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import PremiumForm from "@/components/PremiumForm";
 
 export default function ContactPage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -39,7 +38,27 @@ export default function ContactPage() {
       {/* Form Section */}
       <section ref={formRef} className="relative py-16 sm:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <PremiumForm />
+          {/* GHL Form Embed */}
+          <div className="w-full max-w-2xl mx-auto">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
+              style={{width:"100%",height:"100%",border:"none",borderRadius:"8px"}}
+              id="inline-VZeLp5jYY9CI2ZRNdxkx"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="HomeFlow Encore Contact Form"
+              data-height="600"
+              data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
+              data-form-id="VZeLp5jYY9CI2ZRNdxkx"
+              title="HomeFlow Encore Contact Form"
+              className="w-full h-[600px] rounded-lg shadow-lg"
+            />
+          </div>
         </div>
       </section>
 
