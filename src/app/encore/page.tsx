@@ -422,8 +422,8 @@ export default function EncorePage() {
       {/* Customer Journey Storyboard */}
       <CustomerJourneyStoryboard />
 
-      {/* At a Glance Metrics */}
-      <section className="py-16 sm:py-20 bg-sky-100">
+      {/* Trust & Social Proof Section */}
+      <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -432,23 +432,23 @@ export default function EncorePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">At a Glance</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Why Business Owners Choose Encore</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Key metrics that matter to your business.
+              The numbers that matter most to your bottom line.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-6">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.4 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
+              className="text-center bg-slate-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300"
             >
-              <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">100%</div>
-              <div className="text-slate-600 text-sm">We handle everything</div>
+              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">73%</div>
+              <div className="text-slate-600 text-sm font-medium">Average customer return rate</div>
             </motion.div>
 
             <motion.div
@@ -457,10 +457,10 @@ export default function EncorePage() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.6 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
+              className="text-center bg-slate-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300"
             >
-              <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">24hrs</div>
-              <div className="text-slate-600 text-sm">From signup to working</div>
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">2.4x</div>
+              <div className="text-slate-600 text-sm font-medium">More frequent visits</div>
             </motion.div>
 
             <motion.div
@@ -469,10 +469,22 @@ export default function EncorePage() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.8 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
+              className="text-center bg-slate-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300"
             >
-              <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">$0</div>
-              <div className="text-slate-600 text-sm">Extra equipment required</div>
+              <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">$0</div>
+              <div className="text-slate-600 text-sm font-medium">Setup cost</div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              className="text-center bg-slate-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300"
+            >
+              <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">24hrs</div>
+              <div className="text-slate-600 text-sm font-medium">To go live</div>
             </motion.div>
           </div>
         </div>
@@ -494,133 +506,58 @@ export default function EncorePage() {
                   </p>
                 </motion.div>
 
-                {/* Stats Row */}
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
+
+                {/* Core Benefits Grid */}
+                <div className="grid md:grid-cols-3 gap-8">
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
                   >
-                    <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">100%</div>
-                    <div className="text-slate-600 text-sm">We handle everything</div>
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                      <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-semibold text-slate-900 mb-4">Works While You Sleep</h3>
+                    <p className="text-slate-600 leading-relaxed">No manual work. No remembering. Encore tracks every visit and sends the right message at the right time. Every time.</p>
                   </motion.div>
 
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.6, delay: 0.6 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
                   >
-                    <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">24hrs</div>
-                    <div className="text-slate-600 text-sm">From signup to working</div>
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                      <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-semibold text-slate-900 mb-4">Revenue Protection</h3>
+                    <p className="text-slate-600 leading-relaxed">Stop losing customers to silence. Encore brings them back before they're gone forever.</p>
                   </motion.div>
 
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.6, delay: 0.8 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                     className="text-center bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40 hover:shadow-xl transition-all duration-300"
                   >
-                    <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">$0</div>
-                    <div className="text-slate-600 text-sm">Extra equipment required</div>
-                  </motion.div>
-                </div>
-
-                {/* Feature Highlights */}
-                <div className="grid md:grid-cols-2 gap-8">
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, delay: 1.0 }}
-                    className="space-y-6"
-                  >
-                    <div className="flex items-start space-x-4">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Set & Forget Automation</h3>
-                        <p className="text-slate-600">Set it up once. Never think about it again. Encore works 24/7 to bring customers back.</p>
-                      </div>
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                      <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
                     </div>
-
-                    <div className="flex items-start space-x-4">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Revenue Protection</h3>
-                        <p className="text-slate-600">Stop losing customers to silence. Encore brings them back before they&apos;re gone forever.</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Relationship Building</h3>
-                        <p className="text-slate-600">Show customers you remember them. Show them you want them back. Build loyalty that lasts.</p>
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, delay: 1.2 }}
-                    className="space-y-6"
-                  >
-                    <div className="flex items-start space-x-4">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Zero Setup Hassle</h3>
-                        <p className="text-slate-600">Works with any business. Have a POS? Great. Don&apos;t have one? Even better. Just results.</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Lightning Fast Setup</h3>
-                        <p className="text-slate-600">24 hours. That&apos;s it. We do everything. You start seeing customers return.</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Real-Time Insights</h3>
-                        <p className="text-slate-600">See customers returning. Watch revenue growing. Know Encore is working.</p>
-                      </div>
-                    </div>
+                    <h3 className="text-xl font-semibold text-slate-900 mb-4">Real-Time Insights</h3>
+                    <p className="text-slate-600 leading-relaxed">See customers returning. Watch revenue growing. Know exactly how Encore is working for you.</p>
                   </motion.div>
                 </div>
               </div>

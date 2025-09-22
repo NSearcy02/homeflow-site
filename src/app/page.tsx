@@ -71,16 +71,8 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-slate-900"
             >
-              Your Customers. Returning. Automatically.
+              Your Customers. Returning.
             </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mx-auto"
-            >
-              Set it up once. Watch your revenue grow. Never lose a customer again.
-            </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
