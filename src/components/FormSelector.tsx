@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import MultiStepForm from "./MultiStepForm";
+import PremiumForm from "./PremiumForm";
 
 export default function FormSelector() {
-  const [formType, setFormType] = useState<'multistep' | 'ghl'>('multistep');
+  const [formType, setFormType] = useState<'premium' | 'ghl'>('premium');
 
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -13,16 +13,16 @@ export default function FormSelector() {
       <div className="mb-8">
         <div className="flex bg-slate-100 rounded-lg p-1">
           <motion.button
-            onClick={() => setFormType('multistep')}
+            onClick={() => setFormType('premium')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
-              formType === 'multistep'
+              formType === 'premium'
                 ? 'bg-white text-slate-900 shadow-sm'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            Multi-Step Form
+            Premium Form
           </motion.button>
           <motion.button
             onClick={() => setFormType('ghl')}
@@ -46,8 +46,8 @@ export default function FormSelector() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        {formType === 'multistep' ? (
-          <MultiStepForm />
+        {formType === 'premium' ? (
+          <PremiumForm />
         ) : (
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200/40">
             <div className="mb-6">

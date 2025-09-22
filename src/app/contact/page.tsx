@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import FormSelector from "@/components/FormSelector";
+import PremiumForm from "@/components/PremiumForm";
 
 export default function ContactPage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -44,7 +44,7 @@ export default function ContactPage() {
             animate={isFormInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <FormSelector />
+            <PremiumForm />
           </motion.div>
 
           {/* Trust Indicators */}
