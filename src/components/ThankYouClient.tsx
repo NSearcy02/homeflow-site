@@ -45,34 +45,23 @@ export default function ThankYouClient() {
               Thanks for submitting your details. We&apos;ll reach out shortly to schedule a call.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center pt-6"
+              className="flex justify-center pt-6"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-lg bg-slate-900 text-white px-6 py-3 text-sm font-medium hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
+                  href="/encore"
+                  className="inline-flex items-center justify-center rounded-lg bg-slate-900 text-white px-8 py-4 text-base font-medium hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
                 >
-                  Book a Setup Call
+                  Learn More About Encore
                 </Link>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <a
-                  href="mailto:?subject=Check out HomeFlow Encore&body=I just signed up for HomeFlow Encore - a customer retention system that brings customers back automatically. You should check it out!"
-                  className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 hover:border-slate-400 hover:bg-slate-50 transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
-                >
-                  Share with a Manager
-                </a>
               </motion.div>
             </motion.div>
 
