@@ -27,7 +27,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mx-auto"
+              className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mx-auto mb-16"
             >
               Fill out the form below. We&apos;ll set up Encore for you. Watch customers return.
             </motion.p>
@@ -58,7 +58,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-2 bg-sky-100">
+      <section className="relative py-2 bg-sky-100 mt-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
