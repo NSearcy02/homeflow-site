@@ -42,7 +42,7 @@ export default function ContactPage() {
           <div className="w-full max-w-2xl mx-auto">
             <iframe
               src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
-              style={{width:"100%",height:"auto",minHeight:"1500px",border:"none",borderRadius:"8px"}}
+              style={{width:"100%",height:"auto",minHeight:"1500px",border:"none"}}
               id="inline-VZeLp5jYY9CI2ZRNdxkx"
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
@@ -56,7 +56,7 @@ export default function ContactPage() {
               data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
               data-form-id="VZeLp5jYY9CI2ZRNdxkx"
               title="HomeFlow Encore Contact Form"
-              className="w-full rounded-lg shadow-lg"
+              className="w-full"
             />
           </div>
         </div>
