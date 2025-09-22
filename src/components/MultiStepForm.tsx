@@ -51,23 +51,34 @@ export default function MultiStepForm() {
     setIsSubmitting(true);
     
     try {
-      // Submit to GHL form using their API
-      const formDataToSubmit = new FormData();
-      formDataToSubmit.append('firstName', formData.firstName);
-      formDataToSubmit.append('lastName', formData.lastName);
-      formDataToSubmit.append('email', formData.email);
-      formDataToSubmit.append('phone', formData.phone);
-      formDataToSubmit.append('businessName', formData.businessName);
-      formDataToSubmit.append('businessType', formData.businessType);
-      formDataToSubmit.append('message', formData.message);
-      formDataToSubmit.append('formId', 'VZeLp5jYY9CI2ZRNdxkx');
+      // Submit to GHL using the correct backend endpoint
+      const ghlFormData = new FormData();
+      ghlFormData.append('formData', JSON.stringify({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        businessName: formData.businessName,
+        businessType: formData.businessType,
+        message: formData.message,
+        formId: 'VZeLp5jYY9CI2ZRNdxkx',
+        source: 'HomeFlow Website',
+        utm_source: 'homeflow_website',
+        utm_medium: 'contact_form'
+      }));
       
-      const response = await fetch('https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx', {
+      const response = await fetch('https://backend.leadconnectorhq.com/forms/submit', {
         method: 'POST',
-        body: formDataToSubmit
+        body: ghlFormData,
+        headers: {
+          'Accept': 'application/json',
+        }
       });
 
       if (response.ok) {
+        const result = await response.json();
+        console.log('GHL form submission successful:', result);
+        
         setIsSubmitting(false);
         setIsSuccess(true);
         
@@ -75,15 +86,53 @@ export default function MultiStepForm() {
           router.push('/thank-you');
         }, 2000);
       } else {
-        throw new Error('Form submission failed');
+        throw new Error(`GHL submission failed: ${response.status}`);
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setIsSubmitting(false);
       
-      // Fallback: redirect to thank you page
-      // The form data is still collected, you can set up a webhook later
-      router.push('/thank-you');
+      // Fallback: Try the original GHL iframe method
+      try {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx';
+        form.target = '_blank';
+        form.style.display = 'none';
+        
+        const fields = {
+          'firstName': formData.firstName,
+          'lastName': formData.lastName,
+          'email': formData.email,
+          'phone': formData.phone,
+          'businessName': formData.businessName,
+          'businessType': formData.businessType,
+          'message': formData.message,
+          'formId': 'VZeLp5jYY9CI2ZRNdxkx'
+        };
+        
+        Object.entries(fields).forEach(([key, value]) => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value;
+          form.appendChild(input);
+        });
+        
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+        
+        setIsSuccess(true);
+        setTimeout(() => {
+          router.push('/thank-you');
+        }, 2000);
+        
+      } catch (fallbackError) {
+        console.error('Fallback submission also failed:', fallbackError);
+        // Final fallback: redirect to thank you page
+        router.push('/thank-you');
+      }
     }
   };
 
