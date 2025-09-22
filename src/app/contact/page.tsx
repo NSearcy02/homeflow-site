@@ -37,9 +37,9 @@ export default function ContactPage() {
 
       {/* Form Section */}
       <section ref={formRef} className="relative min-h-screen bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+        <div className="w-full h-screen px-4 sm:px-6 py-8">
           {/* GHL Form Embed */}
-          <div className="w-full max-w-2xl mx-auto">
+          <div className="w-full h-full">
             <iframe
               src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
               style={{width:"100%",height:"100%",border:"none",borderRadius:"8px"}}
@@ -56,7 +56,7 @@ export default function ContactPage() {
               data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
               data-form-id="VZeLp5jYY9CI2ZRNdxkx"
               title="HomeFlow Encore Contact Form"
-              className="w-full h-[calc(100vh-200px)] rounded-lg shadow-lg"
+              className="w-full h-full rounded-lg shadow-lg"
               scrolling="no"
             />
           </div>
