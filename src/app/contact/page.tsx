@@ -52,11 +52,11 @@ export default function ContactPage() {
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
               data-form-name="HomeFlow Encore Contact Form"
-              data-height="800"
+              data-height="1200"
               data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
               data-form-id="VZeLp5jYY9CI2ZRNdxkx"
               title="HomeFlow Encore Contact Form"
-              className="w-full h-[800px] rounded-lg shadow-lg"
+              className="w-full h-[1200px] rounded-lg shadow-lg"
               scrolling="no"
             />
           </div>
