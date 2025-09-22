@@ -36,13 +36,13 @@ export default function ContactPage() {
       </section>
 
       {/* Form Section */}
-      <section ref={formRef} className="relative min-h-screen bg-white">
-        <div className="w-full h-screen px-4 sm:px-6 py-8">
+      <section ref={formRef} className="relative bg-white py-16 sm:py-20">
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
           {/* GHL Form Embed */}
-          <div className="w-full h-full">
+          <div className="w-full max-w-2xl mx-auto">
             <iframe
               src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
-              style={{width:"100%",height:"100%",border:"none",borderRadius:"8px"}}
+              style={{width:"100%",height:"auto",minHeight:"1500px",border:"none",borderRadius:"8px"}}
               id="inline-VZeLp5jYY9CI2ZRNdxkx"
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
@@ -52,12 +52,11 @@ export default function ContactPage() {
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
               data-form-name="HomeFlow Encore Contact Form"
-              data-height="100vh"
+              data-height="1500"
               data-layout-iframe-id="inline-VZeLp5jYY9CI2ZRNdxkx"
               data-form-id="VZeLp5jYY9CI2ZRNdxkx"
               title="HomeFlow Encore Contact Form"
-              className="w-full h-full rounded-lg shadow-lg"
-              scrolling="no"
+              className="w-full rounded-lg shadow-lg"
             />
           </div>
         </div>
