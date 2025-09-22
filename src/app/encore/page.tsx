@@ -447,8 +447,8 @@ export default function EncorePage() {
               whileHover={{ scale: 1.05, y: -5 }}
               className="text-center bg-slate-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300"
             >
-              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">73%</div>
-              <div className="text-slate-600 text-sm font-medium">Average customer return rate</div>
+              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">85%</div>
+              <div className="text-slate-600 text-sm font-medium">Customers return within 30 days</div>
             </motion.div>
 
             <motion.div
@@ -459,8 +459,8 @@ export default function EncorePage() {
               whileHover={{ scale: 1.05, y: -5 }}
               className="text-center bg-slate-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300"
             >
-              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">2.4x</div>
-              <div className="text-slate-600 text-sm font-medium">More frequent visits</div>
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">3.2x</div>
+              <div className="text-slate-600 text-sm font-medium">Increase in repeat visits</div>
             </motion.div>
 
             <motion.div
@@ -472,7 +472,7 @@ export default function EncorePage() {
               className="text-center bg-slate-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300"
             >
               <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">$0</div>
-              <div className="text-slate-600 text-sm font-medium">Setup cost</div>
+              <div className="text-slate-600 text-sm font-medium">Setup fees or equipment</div>
             </motion.div>
 
             <motion.div
@@ -484,7 +484,7 @@ export default function EncorePage() {
               className="text-center bg-slate-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300"
             >
               <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">24hrs</div>
-              <div className="text-slate-600 text-sm font-medium">To go live</div>
+              <div className="text-slate-600 text-sm font-medium">From signup to active</div>
             </motion.div>
           </div>
         </div>
