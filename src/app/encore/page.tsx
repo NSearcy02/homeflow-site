@@ -136,7 +136,7 @@ export default function EncorePage() {
               }}
               className="text-xl md:text-2xl font-semibold leading-relaxed text-slate-700 max-w-4xl mx-auto mt-6 mb-10"
             >
-              The second act that keeps customers coming back—set it up once, never lose revenue again.
+              The second act that keeps customers coming back. Set it up once, never lose revenue to forgotten customers again.
             </motion.h1>
 
             {/* Subtext */}
