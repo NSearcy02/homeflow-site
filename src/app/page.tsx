@@ -115,24 +115,27 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">Why Encore Works</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">The Encore Loop: Customers Never Slip Away</h2>
             
-            {/* Visual Customer Journey Story */}
+            {/* Circular Loop Visual */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isBenefitsInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="max-w-4xl mx-auto mb-8"
             >
-              <div className="flex items-center justify-center space-x-4 sm:space-x-8 mb-6">
-                {/* Customer visits */}
+              <div className="relative w-80 h-80 mx-auto mb-6">
+                {/* Circular Container */}
+                <div className="absolute inset-0 rounded-full border-2 border-slate-200"></div>
+                
+                {/* Customer Visits - Top */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={isBenefitsInView ? { scale: 1, opacity: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.6 }}
-                  className="flex flex-col items-center"
+                  className="absolute -top-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
                 >
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-2">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-2 shadow-lg">
                     <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
@@ -140,26 +143,14 @@ export default function Home() {
                   <span className="text-sm font-medium text-slate-700">Customer Visits</span>
                 </motion.div>
 
-                {/* Arrow */}
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={isBenefitsInView ? { x: 0, opacity: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 0.8 }}
-                  className="flex items-center"
-                >
-                  <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </motion.div>
-
-                {/* Customer stops coming */}
+                {/* Stops Coming - Right */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={isBenefitsInView ? { scale: 1, opacity: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 1.0 }}
-                  className="flex flex-col items-center"
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  className="absolute -right-6 top-1/2 transform -translate-y-1/2 flex flex-col items-center"
                 >
-                  <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-2">
+                  <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-2 shadow-lg">
                     <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                     </svg>
@@ -167,26 +158,14 @@ export default function Home() {
                   <span className="text-sm font-medium text-slate-700">Stops Coming</span>
                 </motion.div>
 
-                {/* Arrow */}
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={isBenefitsInView ? { x: 0, opacity: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 1.2 }}
-                  className="flex items-center"
-                >
-                  <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </motion.div>
-
-                {/* Encore reminder */}
+                {/* Encore Reminds - Bottom */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={isBenefitsInView ? { scale: 1, opacity: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 1.4 }}
-                  className="flex flex-col items-center"
+                  transition={{ duration: 0.5, delay: 1.0 }}
+                  className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
                 >
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-2">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-2 shadow-lg">
                     <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
@@ -194,41 +173,114 @@ export default function Home() {
                   <span className="text-sm font-medium text-slate-700">Encore Reminds</span>
                 </motion.div>
 
-                {/* Arrow */}
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={isBenefitsInView ? { x: 0, opacity: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 1.6 }}
-                  className="flex items-center"
-                >
-                  <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </motion.div>
-
-                {/* Customer returns */}
+                {/* Customer Returns - Left */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={isBenefitsInView ? { scale: 1, opacity: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 1.8 }}
-                  className="flex flex-col items-center"
+                  transition={{ duration: 0.5, delay: 1.2 }}
+                  className="absolute -left-6 top-1/2 transform -translate-y-1/2 flex flex-col items-center"
                 >
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-2">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-2 shadow-lg">
                     <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <span className="text-sm font-medium text-slate-700">Customer Returns</span>
                 </motion.div>
+
+                {/* Curved Arrows */}
+                <motion.svg
+                  className="absolute inset-0 w-full h-full"
+                  viewBox="0 0 320 320"
+                  initial={{ opacity: 0 }}
+                  animate={isBenefitsInView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.8, delay: 1.4 }}
+                >
+                  {/* Arrow 1: Customer Visits → Stops Coming */}
+                  <motion.path
+                    d="M 160 20 Q 240 80 280 160"
+                    stroke="rgb(148 163 184)"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={isBenefitsInView ? { pathLength: 1 } : {}}
+                    transition={{ duration: 1, delay: 1.6 }}
+                  />
+                  <motion.polygon
+                    points="275,155 285,160 275,165"
+                    fill="rgb(148 163 184)"
+                    initial={{ opacity: 0 }}
+                    animate={isBenefitsInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.3, delay: 2.6 }}
+                  />
+
+                  {/* Arrow 2: Stops Coming → Encore Reminds */}
+                  <motion.path
+                    d="M 300 160 Q 240 240 160 280"
+                    stroke="rgb(148 163 184)"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={isBenefitsInView ? { pathLength: 1 } : {}}
+                    transition={{ duration: 1, delay: 1.8 }}
+                  />
+                  <motion.polygon
+                    points="155,275 160,285 165,275"
+                    fill="rgb(148 163 184)"
+                    initial={{ opacity: 0 }}
+                    animate={isBenefitsInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.3, delay: 2.8 }}
+                  />
+
+                  {/* Arrow 3: Encore Reminds → Customer Returns */}
+                  <motion.path
+                    d="M 160 300 Q 80 240 20 160"
+                    stroke="rgb(148 163 184)"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={isBenefitsInView ? { pathLength: 1 } : {}}
+                    transition={{ duration: 1, delay: 2.0 }}
+                  />
+                  <motion.polygon
+                    points="25,165 15,160 25,155"
+                    fill="rgb(148 163 184)"
+                    initial={{ opacity: 0 }}
+                    animate={isBenefitsInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.3, delay: 3.0 }}
+                  />
+
+                  {/* Arrow 4: Customer Returns → Customer Visits */}
+                  <motion.path
+                    d="M 20 160 Q 80 80 160 20"
+                    stroke="rgb(148 163 184)"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={isBenefitsInView ? { pathLength: 1 } : {}}
+                    transition={{ duration: 1, delay: 2.2 }}
+                  />
+                  <motion.polygon
+                    points="165,25 160,15 155,25"
+                    fill="rgb(148 163 184)"
+                    initial={{ opacity: 0 }}
+                    animate={isBenefitsInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.3, delay: 3.2 }}
+                  />
+                </motion.svg>
               </div>
               
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={isBenefitsInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.6, delay: 2.0 }}
+                transition={{ duration: 0.6, delay: 2.4 }}
                 className="text-lg text-slate-600 max-w-2xl mx-auto text-center"
               >
-                The story of every business owner. Until now.
+                The cycle repeats continuously. Your customers never slip away.
               </motion.p>
             </motion.div>
           </motion.div>
