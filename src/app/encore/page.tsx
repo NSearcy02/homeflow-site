@@ -123,7 +123,7 @@ export default function EncorePage() {
               </motion.div>
             </motion.div>
 
-            {/* Main Headline */}
+            {/* Tagline */}
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ 
@@ -134,20 +134,28 @@ export default function EncorePage() {
                 duration: 0.8, 
                 delay: 1.2
               }}
-              className="text-xl md:text-2xl font-medium leading-relaxed text-slate-600 max-w-3xl mx-auto"
+              className="text-xl md:text-2xl font-semibold leading-relaxed text-slate-700 max-w-4xl mx-auto mt-6 mb-10"
             >
-              Encore is the second act that keeps customers returning
+              The second act that keeps customers coming back—set it up once, never lose revenue again.
             </motion.h1>
 
-            {/* Subheadline */}
+            {/* Subtext */}
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
-              className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-3xl mx-auto"
+              transition={{ duration: 0.6, delay: 1.4 }}
+              className="text-base font-normal text-gray-500 max-w-2xl mx-auto"
             >
-              Set it up once. Watch customers return. Never lose revenue to forgotten customers again.
+              Watch customers return without lifting a finger.
             </motion.p>
+
+            {/* Divider */}
+            <motion.hr 
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 1.6 }}
+              className="mx-auto mt-6 w-24 border-t-2 border-gray-200"
+            />
 
           </div>
         </div>
