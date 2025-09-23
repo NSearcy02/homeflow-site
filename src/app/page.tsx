@@ -71,7 +71,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-slate-900"
             >
-              Your Customers. Returning.
+              Your Customers. Returning. Automatically.
             </motion.h1>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
