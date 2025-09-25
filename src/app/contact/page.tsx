@@ -25,7 +25,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mx-auto mb-16"
+              className="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mx-auto mb-12"
             >
               Fill out the form below. We&apos;ll set up Encore for you. Watch customers return.
             </motion.p>
@@ -34,7 +34,7 @@ export default function ContactPage() {
       </section>
 
       {/* Full Page Form */}
-      <section className="relative bg-white">
+      <section className="relative bg-white mb-20">
         <iframe
           src="https://api.leadconnectorhq.com/widget/form/VZeLp5jYY9CI2ZRNdxkx"
           style={{width:"100%",height:"2000px",border:"none"}}
@@ -56,7 +56,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-2 bg-sky-100 mt-16">
+      <section className="relative py-2 bg-sky-100 mt-16 pt-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
